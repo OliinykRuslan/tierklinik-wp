@@ -1,0 +1,70 @@
+.slider-section {
+  .slick-arrow {
+    position: relative;
+    width: 150px;
+    height: 60px;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: #40ccb5;
+      width: 2px;
+      height: 50%;
+      left: 12px;
+    }
+    &.slick-prev {
+      &::before {
+        top: 5px;
+        transform: rotate(45deg);
+      }
+      &::after {
+        bottom: 5px;
+        transform: rotate(-45deg);
+      }
+    }
+    &.slick-next {
+      &::before {
+        top: 5px;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        bottom: 5px;
+        transform: rotate(45deg);
+      }
+    }
+  }
+  .slick-slide {
+    text-align: center;
+  }
+  .slider-item {
+    max-width: 250px;
+    transition: all 0.3s;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-bottom: 50px;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:nth-child(n + 3) {
+      @media (max-width: 680px) {
+        display: none;
+      }
+    }
+  }
+  .slider-description {
+    text-align: left;
+    color: #a0a0a0;
+    height: 125px;
+    .item-title {
+      color: #37617a;
+      font-family: "Replica-Bold";
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+  }
+  .veterinarians-carousel {
+    @media (max-width: 680px) {
+      flex-direction: column;
+    }
+  }
+}

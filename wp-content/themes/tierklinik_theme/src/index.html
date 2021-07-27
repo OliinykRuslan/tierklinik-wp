@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tierklinik</title>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+
+    <!-- build:css assets/css/all.css -->
+    <link rel="stylesheet" href="assets/css/plugins.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- endbuild -->
+    <!-- build:js assets/js/all.js defer -->
+	<script src="assets/js/plugins.js"></script>
+    <script src="assets/js/script.js"></script>
+    <!-- endbuild -->
+
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+</head>
+<body>
+
+	<!-- header -->
+	<div class="navbar-wrapper">
+		<div class="container mx-auto nav-container">
+			<header class="header">
+				<div class="head-menu">
+					<div class="navbar-wrapper-list">
+						<a href="homepage.html">
+							<span class="main-logo">
+								<picture>
+									<source srcset="assets/images/webp/logo-white.webp" type="image/webp">
+									<img src="assets/images/logo-white.png" class="logo" alt="logo">
+								</picture>
+							</span>
+							<span class="fixed-logo">
+                                <picture>
+                                    <source srcset="assets/images/webp/logo.webp" type="image/webp">
+                                    <img src="assets/images/logo.png" class="logo" alt="logo">
+                                </picture>
+							</span>
+						</a>
+						<div class="w-full">
+
+							<ul class="list-menu nav toggleMenu">
+								<li class="nav-item"><a href="#" class="nav-btn">Fachgebiete</a></li>
+								<li class="nav-item"><a href="#" class="nav-btn">Tierhalter</a></li>
+								<li class="nav-item submenuCollapse">
+									<p class="nav-btn">
+										Für Tierärzte
+										<i class="fas fa-chevron-down menu-arrow"></i>
+									</p>
+									<ul class="submenu">
+										<li><a href="#">Information</a></li>
+										<li><a href="#">Aufenthalt</a></li>
+										<li><a href="#">Prävention</a></li>
+										<li><a href="#">Events</a></li>
+										<li><a href="#">Kundenmagazin</a></li>
+									</ul>
+								</li>
+								<li class="nav-item submenuCollapse">
+									<p class="nav-btn">
+										Karriere
+										<i class="fas fa-chevron-down menu-arrow"></i>
+									</p>
+									<ul class="submenu">
+										<li><a href="#">Information</a></li>
+										<li><a href="#">Aufenthalt</a></li>
+										<li><a href="#">Prävention</a></li>
+										<li><a href="#">Events</a></li>
+										<li><a href="#">Kundenmagazin</a></li>
+									</ul>
+								</li>
+								<li class="nav-item submenuCollapse">
+									<p class="nav-btn">
+										Über uns
+										<i class="fas fa-chevron-down menu-arrow"></i>
+									</p>
+										<ul class="submenu">
+											<li><a href="#">Information</a></li>
+											<li><a href="#">Aufenthalt</a></li>
+											<li><a href="#">Prävention</a></li>
+											<li><a href="#">Events</a></li>
+											<li><a href="#">Kundenmagazin</a></li>
+										</ul>
+								</li>
+								<li class="nav-item"><a href="#" class="nav-btn">Wissen</a></li>
+								<li class="nav-item search-box">
+									<a href='#' onclick="event.preventDefault()" class="searchBox nav-btn"><i class="fas fa-search"></i></a>
+
+									<form action="#" class="search-form">
+										<div class="search-wrap">
+											<div class="form-group">
+												<i class="fas fa-search icon-search"></i>
+												<input type="text" class="search-input" placeholder="Suchbegriff" />
+											</div>
+											<div class="form-group">
+												<input type="submit" value="" class="search-btn">
+												<button type="button">
+													<i class="fas fa-arrow-right icon-serch-btn"></i>
+												</button>
+											</div>
+										</div>
+									</form>
+								</li>
+
+								<li class="nav-item phone">
+									<a href="tel:0627378000" class="items-center">
+										<i class="fas fa-phone-alt mr-2"></i>
+										<span class="phone-num">062 737 80 00</span>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="custom_navbar"> 
+						<button class="navbar-toggler showMenu closed">
+							<span class="header_btn">
+								<span class="bit-1"></span>
+								<span class="bit-2"></span>
+								<span class="bit-3"></span>
+							</span>
+						</button>
+					</div>
+				</div>
+			</header>
+		</div>
+	</div>
+
+
+	<section class="section-hero">
+		<div class="hero-wrap">
+			<div class="container mx-auto">
+				<div class="pb-14">
+					<div class="flex">
+						<div class="hero-content">
+							<h1 class="title-page">Mit Kompetenz und Herz</h1>
+							<p class="subtitle-page">
+								Seit über 30 Jahren stehen wir mit höchstem
+								fachlichem Anspruch für die Gesundheit unserer
+								tierischen Patienten rund um die Uhr im Einsatz.
+							</p>
+							<a href="" class="btn">Unsere Fachgebiete</a>
+						</div>
+
+						<div class="hero-img">
+							<div class="emergency-btn">
+								<p class="emergency-title">
+									<span class="emergencyOpen">Notfall</span>
+									<i class="close-btn emergencyClose"></i>
+								</p>
+								<div class="emergency-toggle">
+									<a href="tel:0900800007">
+										<i class="fas fa-phone-alt mr-2"></i>
+										<span class="phone-num">0900 800 007</span>
+									</a>
+									<p class="font-light pl-6 pb-10">(CHF 2.50/Min)</p>
+									<a href="#" class="pb-2 pr-5 flex items-center">
+										<span>Weitere Informationen</span>
+										<i class="fas fa-arrow-right ml-2"></i>
+									</a>
+								</div>
+							</div>
+							<picture>
+								<source srcset="assets/images/webp/herz.webp" type="image/webp">
+								<img src="assets/images/herz.png" alt="">
+							</picture>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="cookie-section cookieSectionJs">
+				<div class="cookie-wrap">
+					<h3 class="cookie-title">Cookies</h3>
+					<p class="txt">Wir verwenden Cookies, um die Benutzerfreundlichkeit
+						zu steigern und besser auf Ihre Bedürfnisse
+						zugeschnittene Inhalte bieten zu können.</p>
+					<button class="btn closeCookieJs">Zulassen</button>
+					<span class="cookie-close-btn">
+						<span class="close-btn closeCookieJs"></span>
+					</span>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+	<section class="slider-section container mx-auto pt-20 pb-32">
+		<h6 class="section-subtitle color-green">Tierärzte</h6>
+		<h2 class="section-title">
+			Für das Wohl Ihres Tieres
+			im Einsatz
+		</h2>
+
+		<div class="veterinarians-carousel flex items-center">
+
+			<div class="slider-item">
+				<div class="slider-photo">
+					<picture>
+						<source srcset="assets/images/webp/stefan.webp" type="image/webp">
+						<img src="assets/images/stefan.jpg" alt="1">
+					</picture>
+				</div>
+
+				<div class="slider-description p-5">
+					<div class="item-title">Stefan Schellenberg</div>
+					<div>
+						<p>Dr. med. vet.</p>
+						<p>Dipl. ACVIM</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item">
+				<div class="slider-photo">
+					<picture>
+						<source srcset="assets/images/webp/barbara.webp" type="image/webp">
+						<img src="assets/images/barbara.jpg" alt="2">
+					</picture>
+				</div>
+
+				<div class="slider-description p-5">
+					<div class="item-title">Barbara Sommer</div>
+					<div>
+						<p>Dr. med. vet.</p>
+						FVH für Kleintiere</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item">
+				<div class="slider-photo">
+					<picture>
+						<source srcset="assets/images/webp/peter.webp" type="image/webp">
+						<img src="assets/images/peter.jpg" alt="1">
+					</picture>
+				</div>
+
+				<div class="slider-description p-5">
+					<div class="item-title">Peter Beck</div>
+					<div>Dr. med. vet.</div>
+				</div>
+			</div>
+
+			<div class="slider-item">
+				<div class="slider-photo">
+					<picture>
+						<source srcset="assets/images/webp/stefan.webp" type="image/webp">
+						<img src="assets/images/stefan.jpg" alt="1">
+					</picture>
+				</div>
+
+				<div class="slider-description p-5">
+					<div class="item-title">Stefan Schellenberg</div>
+					<div>
+						<p>Dr. med. vet.</p>
+						<p>Dipl. ACVIM</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item">
+				<div class="slider-photo">
+					<picture>
+						<source srcset="assets/images/webp/barbara.webp" type="image/webp">
+						<img src="assets/images/barbara.jpg" alt="2">
+					</picture>
+				</div>
+
+				<div class="slider-description p-5">
+					<div class="item-title">Barbara Sommer</div>
+					<div>
+						<p>Dr. med. vet.</p>
+						<p>FVH für Kleintiere</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="slider-item">
+				<div class="slider-photo">
+					<picture>
+						<source srcset="assets/images/webp/peter.webp" type="image/webp">
+						<img src="assets/images/peter.jpg" alt="1">
+					</picture>
+				</div>
+
+				<div class="slider-description p-5">
+					<div class="item-title">Peter Beck</div>
+					<div>Dr. med. vet.</div>
+				</div>
+			</div>
+		</div>
+
+		<a href="#" class="btn shadow-lg mx-auto">Alle Tierärzte</a>
+	</section>
+
+	<section class="competence-section">	
+		<div class="competence-wrap">
+			<div class="competence-img" style="background-image: url('assets/images/istockphoto-626535934-2048x2048.jpg');">
+			</div>
+			<div class="text-item">
+				<p class="section-subtitle color-green">Komptenz und Herz</p>
+				<h2 class="section-title">
+					Ihre Karrierechancen in der
+					Tierklinik Aarau West
+				</h2>
+				<a href="#" class="btn shadow-lg">
+					Mehr erfahren
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="newsblog-section">
+		<div class="container mx-auto">	
+			<h2 class="section-title">
+				Newsblog
+			</h2>
+			<div class="newsblog-wrap shadow-lg">
+				<div class="img-wrap">
+					<picture>
+						<source srcset="assets/images/webp/istockphoto-1207249570-2048x2048.webp" type="image/webp">
+						<img src="assets/images/istockphoto-1207249570-2048x2048.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="text-wrap">
+					<p class="section-subtitle color-green">1. August 2020</p>
+					<p class="section-txt">
+						«Es ist uns wichtig, unseren
+						Tierärzten und TPA Jobs mit
+						Entwicklungsmöglichkeiten zu
+						bieten.»
+					</p>
+				</div>
+			</div>
+			<a href="#" class="btn shadow-lg mx-auto">
+				zum Blog
+			</a>
+		</div>
+	</section>
+	
+	<section class="facts-section">
+		<div class="container mx-auto">
+			<p class="section-subtitle">Tierklinik Aarau West</p>	
+			<h2 class="section-title">
+				Fakten über uns
+			</h2>
+			<div class="facts-wrap">
+				<div class="txt-item">
+					<p class="section-subtitle">14</p>
+					<p class="section-txt">Fachgebiete</p>
+				</div>
+				<div class="txt-item">
+					<p class="section-subtitle">100</p>
+					<p class="section-txt">Mitarbeiter*innen</p>
+				</div>
+				<div class="txt-item">
+					<p class="section-subtitle">22</p>
+					<p class="section-txt">Ausbildungsstellen</p>
+				</div>
+				<div class="txt-item">
+					<p class="section-subtitle">>30</p>
+					<p class="section-txt">Jahre im Einsatz</p>
+				</div>
+			</div>
+			<a href="#" class="btn shadow-lg mx-auto">
+				Mehr erfahren
+			</a>
+		</div>
+	</section>
+
+	<section class="galerie-section">
+		<div class="container mx-auto">
+			<p class="section-subtitle color-green">Galerie</p>	
+			<h2 class="section-title">
+				Rund um unsere Klinik
+			</h2>
+			<div class="galerie-wrap grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:gap-x-10 gap-x-8 gap-y-8 md:gap-y-12 lg:gap-y-16">
+
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A4468.webp" type="image/webp">
+						<img src="assets/images/_03A4468.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/istockphoto-626535934-2048x2048.webp" type="image/webp">
+						<img src="assets/images/istockphoto-626535934-2048x2048.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A8593.webp" type="image/webp">
+						<img src="assets/images/_03A8593.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A8898.webp" type="image/webp">
+						<img src="assets/images/_03A8898.jpg" alt="1">
+					</picture>
+				</div>
+
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/istockphoto-626535934-2048x2048.webp" type="image/webp">
+						<img src="assets/images/istockphoto-626535934-2048x2048.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A4404.webp" type="image/webp">
+						<img src="assets/images/_03A4404.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A1831.webp" type="image/webp">
+						<img src="assets/images/_03A1831.jpg" alt="1">
+					</picture>
+				</div>
+				<div class="galerie-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A4404.webp" type="image/webp">
+						<img src="assets/images/_03A4404.jpg" alt="1">
+					</picture>
+				</div>
+			</div>
+			<a href="#" class="btn shadow-lg mx-auto">
+				zur Galerie
+			</a>
+		</div>
+	</section>
+
+	<section class="contact-section">
+		<a href="" id="backtotop" class="backtop-btn"><i class="fas fa-arrow-up"></i></a>
+		<div class="contact-container container mx-auto">
+			<div class="grid md:grid-cols-3 gap-4 lg:gap-10">
+				<div class="contact-img">
+					<picture>
+						<source srcset="assets/images/webp/_03A1831.webp" type="image/webp">
+						<img src="assets/images/_03A1831.jpg" alt="1">
+					</picture>
+				</div>
+
+				<div class="contact-col">
+					<h6 class="section-subtitle color-green order-1">Kontakt</h6>
+					<div class="mb-4 order-2">
+						<p>Tierklinik Aarau West AG</p>
+						<p>Muhenstrasse 56</p>
+						<p>5036 Oberentfelden</p>
+						<p>Schweiz</p>
+					</div>
+					<div class="md:mb-2 order-3 md:flex"><span class="mr-8 hidden md:block">Fon</span><a href="tel:0627378000" class="mob-btn">062 737 80 00</a></div>
+					<p class="order-7 md:order-4 mt-4 md:mt-0"><span class="mr-8">Fax</span><a href="tel:0627378001">062 737 80 01</a></p>
+
+					<a href="tel:0900800007" class="btn shadow-lg bg-red max-w-full my-6 order-5 emergency-btn">
+						<span class="mr-2">Notfall 0900 800 007</span>
+						<span class="text-xs">(CHF 2.50/Min)</span>
+					</a>
+
+					<a href="info(at)tierklinikaw.ch" class="btn shadow-lg max-w-full order-6">
+						info(at)tierklinikaw.ch
+					</a>
+				</div>
+
+				<div class="contact-col">
+					<h6 class="section-subtitle color-green">Öffnungszeiten</h6>
+					<div class="mb-6">
+						<p>Montag bis Freitag</p>
+						<p>08:00 - 18:00</p>
+						<p class="font-light">(Impfsprechstunde bis 20:00)</p>
+					</div>
+					<div class="mb-6">
+						<p>Samstag</p>
+						<p>08:00 - 12:00</p>
+						<p class="font-light">(Sprechstunde bis 11:00)</p>
+					</div>
+
+					<p>Impressum</p>
+					<p>AGB</p>
+
+					<ul class="social-list flex mt-3">
+						<li><a href="https://www.facebook.com/tierklinikaarauwest"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="www.instagram.com/tierklinik_aarau_west"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="https://www.google.ch/search?q=tierklinik+aw&oq=tierklinik+aw&aqs=chrome..69i57j69i61l2j0l3.2768j0j0&s
+							ourceid=chrome&ie=UTF-8#lrd=0x47903b63009f0951:0xfa16f5954707eb17,1,"><i class="fab fa-google-plus-g"></i></a></li>
+						<li><a href="www.linkedin.com/company/tierklinik-aarau-west-ag"><i class="fab fa-linkedin-in"></i></a></li>
+					</ul>
+				</div>
+
+			</div>
+			<p class="copyright">©Tierklinik Aarau West AG</p>
+		</div>
+	</section>
+
+	<div class="overlay overlayJs"></div>
+
+</body>
+</html>
+
