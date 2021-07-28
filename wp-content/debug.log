@@ -5839,3 +5839,83 @@ Stack trace:
 #5 /home/demon/projects/tierklinik/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
 #6 /home/demon/projects/tierklinik/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
 #7 /home/demon/projects/tierklinik/wp-settings.php(578): do_ in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-fields/post-meta.php on line 9
+[25-Jul-2021 14:10:03 UTC] PHP Notice:  Undefined index: title in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 18
+[25-Jul-2021 14:16:30 UTC] PHP Notice:  Undefined index: title in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 18
+[25-Jul-2021 14:16:30 UTC] PHP Notice:  Undefined index: thumbnail in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 50
+[25-Jul-2021 14:16:30 UTC] PHP Notice:  Undefined index: thumbnail in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 50
+[25-Jul-2021 15:31:14 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type WP_Term as array in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php:17
+Stack trace:
+#0 /home/demon/projects/tierklinik/wp-includes/template-loader.php(106): include()
+#1 /home/demon/projects/tierklinik/wp-blog-header.php(19): require_once('/home/demon/pro...')
+#2 /home/demon/projects/tierklinik/index.php(17): require('/home/demon/pro...')
+#3 {main}
+  thrown in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 17
+[26-Jul-2021 06:41:20 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/forums/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in /home/demon/projects/tierklinik/wp-includes/update.php on line 175
+[26-Jul-2021 06:41:20 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/forums/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in /home/demon/projects/tierklinik/wp-includes/update.php on line 413
+[26-Jul-2021 06:41:20 UTC] PHP Warning:  An unexpected error occurred. Something may be wrong with WordPress.org or this server&#8217;s configuration. If you continue to have problems, please try the <a href="https://wordpress.org/support/forums/">support forums</a>. (WordPress could not establish a secure connection to WordPress.org. Please contact your server administrator.) in /home/demon/projects/tierklinik/wp-includes/update.php on line 693
+[28-Jul-2021 06:21:48 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:21:52 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:21:59 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:04 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:06 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:13 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:20 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:27 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:34 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:41 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:48 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:22:55 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:02 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:09 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:16 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:23 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:30 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:37 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:44 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:51 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:23:58 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:05 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:05 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:12 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:19 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:26 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:33 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:40 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:47 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:24:54 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:01 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:08 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:15 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:22 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:29 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:36 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:43 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:50 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:25:57 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:04 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:06 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:11 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:18 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:25 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:32 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:39 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:26:46 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:27:19 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:28:07 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:28:19 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/inc/custom-actions.php on line 112
+[28-Jul-2021 06:30:23 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function apply_filters(), 1 passed in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/newsblog-tmp.php on line 10 and exactly 2 expected in /home/demon/projects/tierklinik/wp-includes/plugin.php:163
+Stack trace:
+#0 /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/newsblog-tmp.php(10): apply_filters('news_posts_quer...')
+#1 /home/demon/projects/tierklinik/wp-includes/template-loader.php(106): include('/home/demon/pro...')
+#2 /home/demon/projects/tierklinik/wp-blog-header.php(19): require_once('/home/demon/pro...')
+#3 /home/demon/projects/tierklinik/index.php(17): require('/home/demon/pro...')
+#4 {main}
+  thrown in /home/demon/projects/tierklinik/wp-includes/plugin.php on line 163
+[28-Jul-2021 09:50:08 UTC] PHP Notice:  Trying to get property 'term_id' of non-object in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 11
+[28-Jul-2021 09:50:08 UTC] PHP Notice:  Trying to get property 'taxonomy' of non-object in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 11
+[28-Jul-2021 09:50:08 UTC] PHP Notice:  Trying to get property 'name' of non-object in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 30
+[28-Jul-2021 09:50:08 UTC] PHP Recoverable fatal error:  Object of class WP_Error could not be converted to string in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/template-parts/recruiting_&_career_sections/index.php on line 15
+[28-Jul-2021 09:50:10 UTC] PHP Notice:  Trying to get property 'term_id' of non-object in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 11
+[28-Jul-2021 09:50:10 UTC] PHP Notice:  Trying to get property 'taxonomy' of non-object in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 11
+[28-Jul-2021 09:50:10 UTC] PHP Notice:  Trying to get property 'name' of non-object in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/single-veterinarians.php on line 30
+[28-Jul-2021 09:50:10 UTC] PHP Recoverable fatal error:  Object of class WP_Error could not be converted to string in /home/demon/projects/tierklinik/wp-content/themes/tierklinik_theme/template-parts/recruiting_&_career_sections/index.php on line 15

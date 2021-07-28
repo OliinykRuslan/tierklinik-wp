@@ -17,20 +17,16 @@
 	<?php tierklinik_theme_post_thumbnail(); ?>
 
 	<div class="entry-content">
-		<div class="custom-content">
-			<div class="container mx-auto">
-				<?php
-				the_content();
+		<?php
+		the_content();
 
-				wp_link_pages(
-					array(
-						'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tierklinik_theme' ),
-						'after'  => '</div>',
-					)
-				);
-				?>
-			</div>
-		</div>
+		wp_link_pages(
+			array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tierklinik_theme' ),
+				'after'  => '</div>',
+			)
+		);
+		?>
 	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>

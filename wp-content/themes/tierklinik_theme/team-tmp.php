@@ -17,4 +17,3 @@ include_once('template-parts/vet_posts/list_view.php');
     <div class="overlay overlayJs"></div>
 <?php
 get_footer();
-?>

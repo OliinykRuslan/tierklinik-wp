@@ -40,6 +40,8 @@ class Veterinarians
             $rank           = carbon_get_post_meta($post->ID, 'rank');
             $diploma        = carbon_get_post_meta($post->ID, 'diploma');
             $resume         = carbon_get_post_meta($post->ID, 'resume');
+            $slogan         = carbon_get_post_meta($post->ID, 'single_vet_slogan');
+            $slogan_author  = carbon_get_post_meta($post->ID, 'single_vet_slogan_author');
             $res[] = array(
                 'id'        => $post->ID,
                 'post_date' => $post->post_date,
@@ -48,6 +50,10 @@ class Veterinarians
                 'rank'      => $rank,
                 'diploma'   => $diploma,
                 'resume'    => $resume,
+                'slogan'    => array(
+                    'content' => $slogan,
+                    'author'  => $slogan_author
+                ),
                 'thumbnail' => array(
                     'alt' => get_post_meta($attachment->ID, '_wp_attachment_image_alt', true),
                     'src' => get_the_post_thumbnail_url($post->ID, 'thumbnail'),
@@ -55,7 +61,7 @@ class Veterinarians
             );
         }
         $myposts = null;
-//        wp_reset_postdata();
+        wp_reset_postdata();
         return $res;
     }
 

@@ -6,7 +6,8 @@ add_action( 'carbon_fields_register_fields', 'crb_register_custom_fields' );
 function crb_register_custom_fields(){
     Container::make('post_meta', __('Main banner'))
         ->where( 'post_type', '=', 'page')
-//        ->or_where( 'post_type', '=', 'veterinarians')
+        ->or_where('post_type', '=', 'news')
+        ->or_where('post_type', '=', 'veterinarians')
         ->add_fields(array(
             Field::make('image', 'banner_image', 'Left side image')
                 ->set_width(33),
@@ -202,7 +203,70 @@ function crb_register_custom_fields(){
                 ->set_width(50),
             Field::make('text', 'diploma', __('Diploma'))
                 ->set_width(50),
+            Field::make('checkbox', 'is_resume', __('Upload resume? Yes/No'))
+                ->set_width(50),
             Field::make('file', 'resume', __('Upload resume'))
                 ->set_value_type( 'url' )
+                ->set_width(50)
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'is_resume',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('checkbox', 'show_slogan', 'Show slogan? Yes/No'),
+            Field::make('textarea', 'single_vet_slogan', __('Slogan'))
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_slogan',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('text', 'single_vet_slogan_author', __('Author'))
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_slogan',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('checkbox', 'customise_link_to_branch', __('Customise link to Branch block')),
+            Field::make('textarea', 'link_to_branch_text', __('Block text'))
+                ->set_default_value('Erfahren Sie mehr über den Fachbereich von')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'customise_link_to_branch',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('image', 'link_to_branch_tmb', __('Image'))
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'customise_link_to_branch',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                ))
+                ->set_value_type('url')
+                ->set_width(50),
+            Field::make('text', 'link_to_branch_btn_txt', __('Button text'))
+                ->set_default_value('Mehr erfahren')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'customise_link_to_branch',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                ))
+                ->set_width(50)
         ));
 }

@@ -37,7 +37,7 @@ if($page_slug == 'team'){
             <?php
                 foreach($vets->query_posts as $post):
             ?>
-            <div class="slider-item">
+            <div class="slider-item max-w-xs shadow-lg">
                 <a href="<?= $post['guid']?>">
                     <div class="slider-photo">
                         <picture>

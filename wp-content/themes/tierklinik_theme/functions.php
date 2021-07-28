@@ -143,6 +143,7 @@ function tierklinik_theme_styles(){
     wp_enqueue_style( 'tierklinik_theme-app-style', get_template_directory_uri() . '/dist/assets/css/style.css', array(), '' );
     wp_enqueue_style( 'tierklinik_theme-tailwindcss', 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css', array(), '' );
     wp_enqueue_style( 'tierklinik_theme-fontawesome', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css', array(), '' );
+	wp_enqueue_style( 'tierklinik_theme-fancy', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css', array(), '' );
 }
 add_action( 'wp_enqueue_scripts', 'tierklinik_theme_styles' );
 
@@ -154,6 +155,7 @@ function tierklinik_theme_scripts() {
 	wp_enqueue_script( 'tierklinik_theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'tierklinik_theme-plugins', get_template_directory_uri() . '/dist/assets/js/plugins.js', array(), '', true );
 	wp_enqueue_script( 'tierklinik_theme-app-script', get_template_directory_uri() . '/dist/assets/js/script.js', array(), '', true );
+	wp_enqueue_script( 'tierklinik_theme-fancy-script', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js', array(), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
