@@ -18,7 +18,7 @@ if($news_posts->have_posts()):?>
     <?php
     while ($news_posts->have_posts()):
         $news_posts->the_post();?>
-        <div class="newsblog-wrap shadow-lg">
+        <div class="newsblog-item shadow-lg">
             <div class="img-wrap">
                 <picture>
 <!--                    <source srcset="assets/images/webp/istockphoto-1207249570-2048x2048.webp" type="image/webp">-->

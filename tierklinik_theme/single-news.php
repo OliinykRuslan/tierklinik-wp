@@ -7,9 +7,11 @@ include_once('template-parts/app_banner/index.php');
 
 the_title(); ?>
 <div class="single-post-cont">
-    <?php
-    the_content();
-    ?>
+    <div class="container mx-auto">
+        <?php
+        the_content();
+        ?>
+    </div>
 </div>
 <?php
 get_footer();
