@@ -1,0 +1,29 @@
+.galerie-section {
+  margin-bottom: 167px;
+  .section-title {
+    margin-bottom: 86px;
+  }
+  .section-subtitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .galerie-wrap {
+    margin-bottom: 132px;
+    .galerie-img {
+      display: none;
+      &:nth-child(-n + 4) {
+        display: block;
+      }
+
+      @media (min-width: 768px) {
+        display: none;
+        &:nth-child(-n + 6) {
+          display: block;
+        }
+      }
+      @media (min-width: 1024px) {
+        display: block;
+      }
+    }
+  }
+}
