@@ -35,7 +35,34 @@ class CustomActions
             'show_admin_column'     => true,
             'show_in_rest'          => null,
             'rest_base'             => null,
+        ] );
 
+        register_taxonomy( 'knowledge_area', [ 'veterinarians' ], [
+            'label'                 => __('Knowledge'),
+            'labels'                => [
+                'name'              => __('Knowledge'),
+                'singular_name'     => __('Knowledge'),
+                'search_items'      => __('Search Knowledge'),
+                'all_items'         => __('All Knowledge'),
+                'view_item '        => __('View Knowledge'),
+                'parent_item'       => __('Parent Knowledge'),
+                'parent_item_colon' => __('Parent Knowledge:'),
+                'edit_item'         => __('Edit Knowledge'),
+                'update_item'       => __('Update Knowledge'),
+                'add_new_item'      => __('Add New Knowledge'),
+                'new_item_name'     => __('New Knowledge Name'),
+                'menu_name'         => __('Knowledge'),
+            ],
+            'description'           => '',
+            'public'                => true,
+            'hierarchical'          => true,
+
+            'rewrite'               => true,
+            'capabilities'          => array(),
+            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
+            'show_admin_column'     => true,
+            'show_in_rest'          => null,
+            'rest_base'             => null,
         ] );
     }
 
@@ -65,7 +92,7 @@ class CustomActions
             'menu_icon'           => null,
             'hierarchical'        => false,
             'supports'            => [ 'title', 'editor', 'thumbnail' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-            'taxonomies'          => ['branch'],
+            'taxonomies'          => ['branch', 'knowledge_area'],
             'has_archive'         => false,
             'rewrite'             => true,
             'query_var'           => true,
