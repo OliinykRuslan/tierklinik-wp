@@ -49,7 +49,7 @@ if(!empty(carbon_get_post_meta($post_id, 'link_to_branch_tmb'))){
                     <?php
                     if(!empty(get_the_content())):
                     ?>
-                    <h2 class="section-title">Biografie</h2>
+                    <h2 class="section-title"><?= __('Biografie')?></h2>
                     <div class="description-txt">
                         <?php the_content(); ?>
                     </div>
@@ -77,7 +77,7 @@ if(!empty(carbon_get_post_meta($post_id, 'link_to_branch_tmb'))){
 										l85.333,85.333c6.657,6.673,17.463,6.687,24.136,0.031c0.01-0.01,0.02-0.02,0.031-0.031l85.333-85.333
 										C342.915,312.486,342.727,301.682,335.947,295.134z"/>
 							</svg>
-                            <span>Download CV</span>
+                            <span><?= __('Download CV')?></span>
                         </a>
                             <?php
                         endif;
@@ -104,101 +104,17 @@ if(!empty(carbon_get_post_meta($post_id, 'link_to_branch_tmb'))){
                 ?>
         </div>
     </section>
-            <?php
-        endif;
-            ?>
-<!--    <section class="news-section">-->
-<!--        <div class="container mx-auto">-->
-<!--            <div class="news-wrap">-->
-<!---->
-<!--                <div class="title-wrap">-->
-<!--                    <h2 class="section-title">Publizierte Artikel</h2>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="item-wrap">-->
-<!--                    <a href="#" class="news-item">-->
-<!--                        <picture>-->
-<!--                            <source srcset="assets/images/webp/news-item.webp" type="image/webp">-->
-<!--                            <img src="assets/images/news-item.png" class="news-img" alt="news-item">-->
-<!--                        </picture>-->
-<!--                        <div class="news-description">-->
-<!--                            <p class="news-title">Langer Titel</p>-->
-<!--                            <p class="news-subtitle">Untertitel</p>-->
-<!--                        </div>-->
-<!--                        <div class="arrow">-->
-<!--                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
-<!--                                 viewBox="0 0 476.213 476.213">-->
-<!--                                <polygon points="345.606,107.5 324.394,128.713 418.787,223.107 0,223.107 0,253.107 418.787,253.107 324.394,347.5-->
-<!--								345.606,368.713 476.213,238.106 "/>-->
-<!--                            </svg>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!---->
-<!--                    <a href="#" class="news-item">-->
-<!--                        <picture>-->
-<!--                            <source srcset="assets/images/webp/news-item.webp" type="image/webp">-->
-<!--                            <img src="assets/images/news-item.png" class="news-img" alt="news-item">-->
-<!--                        </picture>-->
-<!--                        <div class="news-description">-->
-<!--                            <p class="news-title">Langer Titel</p>-->
-<!--                            <p class="news-subtitle">Untertitel</p>-->
-<!--                        </div>-->
-<!--                        <div class="arrow">-->
-<!--                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
-<!--                                 viewBox="0 0 476.213 476.213">-->
-<!--                                <polygon points="345.606,107.5 324.394,128.713 418.787,223.107 0,223.107 0,253.107 418.787,253.107 324.394,347.5-->
-<!--								345.606,368.713 476.213,238.106 "/>-->
-<!--                            </svg>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!---->
-<!--                    <a href="#" class="news-item">-->
-<!--                        <picture>-->
-<!--                            <source srcset="assets/images/webp/news-item.webp" type="image/webp">-->
-<!--                            <img src="assets/images/news-item.png" class="news-img" alt="news-item">-->
-<!--                        </picture>-->
-<!--                        <div class="news-description">-->
-<!--                            <p class="news-title">Langer Titel</p>-->
-<!--                            <p class="news-subtitle">Untertitel</p>-->
-<!--                        </div>-->
-<!--                        <div class="arrow">-->
-<!--                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"-->
-<!--                                 viewBox="0 0 476.213 476.213">-->
-<!--                                <polygon points="345.606,107.5 324.394,128.713 418.787,223.107 0,223.107 0,253.107 418.787,253.107 324.394,347.5-->
-<!--								345.606,368.713 476.213,238.106 "/>-->
-<!--                            </svg>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-
     <?php
+        endif;
+
         include_once('template-parts/news/news-prev.php');
 
         include_once('template-parts/recruiting_&_career_sections/index.php');
     ?>
-<!--    <section class="competence-section">-->
-<!--        <div class="competence-wrap">-->
-<!--            <div class="competence-img" style="background-image: url('assets/images/istockphoto-626535934-2048x2048.jpg');">-->
-<!--            </div>-->
-<!--            <div class="text-item">-->
-<!--                <p class="section-subtitle color-green">--><?//= $tax[0]->name?><!--</p>-->
-<!--                <h2 class="section-title">-->
-
-<!--                </h2>-->
-<!--                <a href="--><?//= get_term_link( $tax[0]->term_id, $tax[0]->taxonomy )?><!--" class="btn shadow-lg">-->
-<!--                    Mehr erfahren-->
-<!--                </a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
 
     <a href="/team" class="btn full-btn bg-green">
         <span class="arrow arrow-left mr-2"></span>
-        Alle Tierärzte
+        <?= __('Alle Tierärzte') ?>
     </a>
 
     <div class="overlay overlayJs"></div>

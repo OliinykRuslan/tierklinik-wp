@@ -269,4 +269,10 @@ function crb_register_custom_fields(){
                 ))
                 ->set_width(50)
         ));
+
+    Container::make( 'term_meta', __('Taxonomy Properties') )
+        ->where( 'term_taxonomy', '=', 'knowledge_area' )
+        ->add_fields( array(
+            Field::make( 'image', 'tax_thumbnail', __('Thumbnail') ),
+        ) );
 }
