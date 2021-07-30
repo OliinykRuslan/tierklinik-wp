@@ -45,7 +45,7 @@ $(document).ready(function () {
   });
 
   //submenu mobile collapse
-  $(document).on("click", ".submenuCollapse", function (e) {
+  $(document).on("click", ".menu-item-has-children", function (e) {
     $(".toggleMenu .submenu").not($(this).find(".submenu")).slideUp(300);
     $(this).find(".submenu").slideToggle(300);
   });
@@ -68,9 +68,9 @@ $(document).ready(function () {
           infinite: true,
           arrows: true,
           prevArrow:
-              "<button type='button' class='slick-prev pull-left'></button>",
+            "<button type='button' class='slick-prev pull-left'></button>",
           nextArrow:
-              "<button type='button' class='slick-next pull-right'></button>",
+            "<button type='button' class='slick-next pull-right'></button>",
           responsive: [
             {
               breakpoint: 1024,
@@ -100,13 +100,13 @@ $(document).ready(function () {
   // Cookie section start
   function setCookie(name, value, expires, path, domain, secure) {
     document.cookie =
-        name +
-        "=" +
-        escape(value) +
-        (expires ? "; expires=" + expires : "") +
-        (path ? "; path=" + path : "") +
-        (domain ? "; domain=" + domain : "") +
-        (secure ? "; secure" : "");
+      name +
+      "=" +
+      escape(value) +
+      (expires ? "; expires=" + expires : "") +
+      (path ? "; path=" + path : "") +
+      (domain ? "; domain=" + domain : "") +
+      (secure ? "; secure" : "");
   }
   function getCookie(name) {
     var cookie = " " + document.cookie;

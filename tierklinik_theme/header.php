@@ -50,16 +50,43 @@ $nav_args = array(
                     <div class="w-full">
                         <ul class="list-menu nav toggleMenu">
                             <?php wp_nav_menu($nav_args)?>
+                            
+                            <li class="menu-item search-box">
+                                <a href='#' onclick="event.preventDefault()" class="searchBox nav-btn"><i class="fas fa-search"></i></a>
+
+                                <form action="#" class="search-form">
+                                    <div class="search-wrap">
+                                        <div class="form-group">
+                                            <i class="fas fa-search icon-search"></i>
+                                            <input type="text" class="search-input" placeholder="Suchbegriff" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="" class="search-btn">
+                                            <button type="button">
+                                                <i class="fas fa-arrow-right icon-serch-btn"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+
+                            <li class="menu-item phone">
+                                <a href="tel:0627378000" class="items-center">
+                                    <i class="fas fa-phone-alt mr-2"></i>
+                                    <span class="phone-num">062 737 80 00</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
                 <div class="custom_navbar">
                     <button class="navbar-toggler showMenu closed">
-							<span class="header_btn">
-								<span class="bit-1"></span>
-								<span class="bit-2"></span>
-								<span class="bit-3"></span>
-							</span>
+                        <span class="header_btn">
+                            <span class="bit-1"></span>
+                            <span class="bit-2"></span>
+                            <span class="bit-3"></span>
+                        </span>
                     </button>
                 </div>
             </div>
