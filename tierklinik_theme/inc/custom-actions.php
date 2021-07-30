@@ -28,7 +28,7 @@ class CustomActions
             'description'           => '',
             'public'                => true,
             'hierarchical'          => true,
-
+            'show_ui'               => true,
             'rewrite'               => true,
             'capabilities'          => array(),
             'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
@@ -56,7 +56,7 @@ class CustomActions
             'description'           => '',
             'public'                => true,
             'hierarchical'          => true,
-
+            'show_ui'               => true,
             'rewrite'               => true,
             'capabilities'          => array(),
             'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false

@@ -50,7 +50,7 @@ if ( ! function_exists( 'tierklinik_theme_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-				'menu-1' => esc_html__( 'Primary', 'tierklinik_theme' ),
+				'main_menu' => esc_html__( 'Primary', 'tierklinik_theme' ),
 			)
 		);
 
@@ -122,17 +122,17 @@ add_action( 'after_setup_theme', 'tierklinik_theme_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function tierklinik_theme_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'tierklinik_theme' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'tierklinik_theme' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
+//	register_sidebar(
+//		array(
+//			'name'          => esc_html__( 'Sidebar', 'tierklinik_theme' ),
+//			'id'            => 'sidebar-1',
+//			'description'   => esc_html__( 'Add widgets here.', 'tierklinik_theme' ),
+//			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+//			'after_widget'  => '</section>',
+//			'before_title'  => '<h2 class="widget-title">',
+//			'after_title'   => '</h2>',
+//		)
+//	);
 }
 add_action( 'widgets_init', 'tierklinik_theme_widgets_init' );
 

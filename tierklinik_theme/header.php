@@ -9,6 +9,12 @@
  * @package Tierklinik_Theme
  */
 
+$nav_args = array(
+        'theme_location'    => 'main_menu',
+        'container' => false,
+        'items_wrap' => '%3$s'
+);
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -27,7 +33,7 @@
         <header class="header">
             <div class="head-menu">
                 <div class="navbar-wrapper-list">
-                    <a href="homepage.html">
+                    <a href="/">
 							<span class="main-logo">
 								<picture>
 									<source srcset=<?= get_template_directory_uri() . "/dist/assets/images/webp/logo-white.webp"?> type="image/webp">
@@ -42,76 +48,8 @@
 							</span>
                     </a>
                     <div class="w-full">
-
                         <ul class="list-menu nav toggleMenu">
-                            <li class="nav-item"><a href="#" class="nav-btn">Fachgebiete</a></li>
-                            <li class="nav-item"><a href="#" class="nav-btn">Tierhalter</a></li>
-                            <li class="nav-item submenuCollapse">
-                                <p class="nav-btn">
-                                    Für Tierärzte
-                                    <i class="fas fa-chevron-down menu-arrow"></i>
-                                </p>
-                                <ul class="submenu">
-                                    <li><a href="#">Information</a></li>
-                                    <li><a href="#">Aufenthalt</a></li>
-                                    <li><a href="#">Prävention</a></li>
-                                    <li><a href="#">Events</a></li>
-                                    <li><a href="#">Kundenmagazin</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenuCollapse">
-                                <p class="nav-btn">
-                                    Karriere
-                                    <i class="fas fa-chevron-down menu-arrow"></i>
-                                </p>
-                                <ul class="submenu">
-                                    <li><a href="#">Information</a></li>
-                                    <li><a href="#">Aufenthalt</a></li>
-                                    <li><a href="#">Prävention</a></li>
-                                    <li><a href="#">Events</a></li>
-                                    <li><a href="#">Kundenmagazin</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenuCollapse">
-                                <p class="nav-btn">
-                                    Über uns
-                                    <i class="fas fa-chevron-down menu-arrow"></i>
-                                </p>
-                                <ul class="submenu">
-                                    <li><a href="#">Information</a></li>
-                                    <li><a href="#">Aufenthalt</a></li>
-                                    <li><a href="#">Prävention</a></li>
-                                    <li><a href="#">Events</a></li>
-                                    <li><a href="#">Kundenmagazin</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="#" class="nav-btn">Wissen</a></li>
-                            <li class="nav-item search-box">
-                                <a href='#' onclick="event.preventDefault()" class="searchBox nav-btn"><i class="fas fa-search"></i></a>
-
-                                <form action="#" class="search-form">
-                                    <div class="search-wrap">
-                                        <div class="form-group">
-                                            <i class="fas fa-search icon-search"></i>
-                                            <input type="text" class="search-input" placeholder="Suchbegriff" />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" value="" class="search-btn">
-                                            <button type="button">
-                                                <i class="fas fa-arrow-right icon-serch-btn"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </li>
-
-                            <li class="nav-item phone">
-                                <a href="tel:0627378000" class="items-center">
-                                    <i class="fas fa-phone-alt mr-2"></i>
-                                    <span class="phone-num">062 737 80 00</span>
-                                </a>
-                            </li>
-
+                            <?php wp_nav_menu($nav_args)?>
                         </ul>
                     </div>
                 </div>
