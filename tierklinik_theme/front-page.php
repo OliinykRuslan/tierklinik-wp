@@ -3,6 +3,8 @@ get_header();
 $post_id = get_the_ID();
 $add_sections = carbon_get_post_meta($post_id, 'additional_sections');
 $news_posts = apply_filters('news_posts_query', 1);
+$vet_single = false;
+$vets_term  = null;
 
 include_once('template-parts/app_banner/index.php');
 include_once('template-parts/cookie_section/index.php');

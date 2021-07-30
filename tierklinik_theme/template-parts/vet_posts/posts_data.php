@@ -8,27 +8,39 @@ class Veterinarians
     /**
      * Veterinarians constructor.
      * @param null $id
-     * @param false $single
+     * @param false $vet_single
+     * @param null $vets_term
      */
-    function __construct($id=null, $single=false){
-        $this->query_posts          = $this->get_veterinarians_posts($id,$single);
-        $this->container_settings   = $this->get_container_settings($id,$single);
+    function __construct($id=null, $vet_single=false, $vets_term=null){
+        $this->query_posts          = $this->get_veterinarians_posts($id,$vet_single,$vets_term);
+        $this->container_settings   = $this->get_container_settings($id,$vet_single);
     }
 
     /**
      * @param $id
-     * @param $single
+     * @param $vet_single
      * @return array
      */
-    private function get_veterinarians_posts($id,$single){
+    private function get_veterinarians_posts($id,$vet_single,$vets_term){
         $query = new WP_Query;
 
         $args = array(
             'post_type' => 'veterinarians'
         );
 
-        if($single){
+        if($vet_single){
             $args['p'] = $id;
+        }
+
+        if($vets_term){
+            $args['tax_query'] = array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => $vets_term['slug'],
+                    'field'    => 'id',
+                    'terms'    => $vets_term['id']
+                ),
+            );
         }
         $myposts = $query->query($args);
 
@@ -67,21 +79,36 @@ class Veterinarians
 
     /**
      * @param $id
-     * @param $single
+     * @param $vet_single
      * @return array
      */
-    private function get_container_settings($id,$single){
-        $show = carbon_get_post_meta($id, 'show_vet_list');
-        if(!$single && $show){
-            return array(
-                'show'          => $show,
-                'class'         => carbon_get_post_meta($id, 'vet_list_format'),
-                'bg'            => carbon_get_post_meta($id, 'vet_list_wrap_bg'),
-                'title'         => carbon_get_post_meta($id, 'title_vet_list'),
-                'subtitle'      => carbon_get_post_meta($id, 'subtitle_vet_list'),
-                'button_txt'    => carbon_get_post_meta($id, 'button_text_vet_list')
-            );
+    private function get_container_settings($id,$vet_single){
+        if(!is_tax()){
+            $show = carbon_get_post_meta($id, 'show_vet_list');
+            if(!$vet_single && $show){
+                return array(
+                    'show'          => $show,
+                    'class'         => carbon_get_post_meta($id, 'vet_list_format'),
+                    'bg'            => carbon_get_post_meta($id, 'vet_list_wrap_bg'),
+                    'title'         => carbon_get_post_meta($id, 'title_vet_list'),
+                    'subtitle'      => carbon_get_post_meta($id, 'subtitle_vet_list'),
+                    'button_txt'    => carbon_get_post_meta($id, 'button_text_vet_list')
+                );
+            }
+        }else{
+            $show = carbon_get_term_meta($id, 'show_vet_list');
+            if(!$vet_single && $show){
+                return array(
+                    'show'          => $show,
+                    'class'         => carbon_get_term_meta($id, 'vet_list_format'),
+                    'bg'            => carbon_get_term_meta($id, 'vet_list_wrap_bg'),
+                    'title'         => carbon_get_term_meta($id, 'title_vet_list'),
+                    'subtitle'      => carbon_get_term_meta($id, 'subtitle_vet_list'),
+                    'button_txt'    => carbon_get_term_meta($id, 'button_text_vet_list')
+                );
+            }
         }
+
     }
 
 }

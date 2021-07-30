@@ -18,6 +18,7 @@ class Knowledge
         foreach($terms as $key => $term){
             $thmb_id = get_term_meta($term->term_id, '_tax_thumbnail', true);
             $i = array(
+                'id'    => $term->term_id,
                 'url'   => get_term_link($term->term_id),
                 'name'  => $term->name,
                 'thumb_src' => wp_get_attachment_image_url($thmb_id),

@@ -1,7 +1,7 @@
 <?php
 
 include_once __DIR__ . '/posts_data.php';
-$vets = new Veterinarians($post_id);
+$vets = new Veterinarians($post_id, $vet_single, $vets_term);
 
 if($vets->container_settings['show']):
 

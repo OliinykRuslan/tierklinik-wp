@@ -2,6 +2,23 @@
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
+/**
+ * @return array
+ */
+function get_knowledge(){
+    $terms = get_terms([
+        'taxonomy' => 'knowledge_area',
+        'hide_empty' => false,
+    ]);
+
+    $res = array();
+    foreach($terms as $term){
+        $res[$term->term_id] = $term->name;
+    }
+
+    return $res;
+};
+
 add_action( 'carbon_fields_register_fields', 'crb_register_custom_fields' );
 function crb_register_custom_fields(){
     Container::make('post_meta', __('Main banner'))
@@ -269,10 +286,103 @@ function crb_register_custom_fields(){
                 ))
                 ->set_width(50)
         ));
+    Container::make( 'term_meta', __('Page content'))
+        ->where( 'term_taxonomy', '=', 'branch')
+        ->add_fields(array(
+            Field::make('checkbox', 'show_logo', __('Show logo? Yes/No')),
+            Field::make('image', 'tax_page_logo', __('Logo'))
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_logo',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('image', 'tax_first_banner', __('Banner')),
+            Field::make('text', 'tax_service_title', __('Title Services section'))
+                ->set_default_value('Leistungsangebot'),
+            Field::make('complex', 'services_list', __('Services list'))
+                ->set_collapsed(true)
+                ->add_fields(array(
+                    Field::make('textarea', 'tsx_single_service')
+                )),
+            Field::make('checkbox', 'show_vet_list', __('Show list? Yes/No'))
+                ->set_width(50),
+            Field::make('radio', 'vet_list_format', __('Format view list'))
+                ->set_width(25)
+                ->add_options(array(
+                    'carousel'  => __('Slider'),
+                    'gallery'     => __('Gallery')
+                ))
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_vet_list',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('color', 'vet_list_wrap_bg', __('Background section'))
+                ->set_alpha_enabled( true )
+                ->set_width(25)
+                ->set_default_value('#ooo')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_vet_list',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                )),
+            Field::make('text', 'subtitle_vet_list', __('Subtitle'))
+                ->set_default_value('Tierärzte')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_vet_list',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                ))
+                ->set_width(33),
+
+            Field::make('text', 'title_vet_list', __('Title'))
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_vet_list',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                ))
+                ->set_width(33),
+            Field::make('text', 'button_text_vet_list', __('Button text'))
+                ->set_default_value('Alle Tierärzte')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'show_vet_list',
+                        'value' => true,
+                        'compare' => '=',
+                    )
+                ))
+                ->set_width(33),
+            Field::make('image', 'tax_bottom_banner', __('Bottom banner'))
+        ));
 
     Container::make( 'term_meta', __('Taxonomy Properties') )
         ->where( 'term_taxonomy', '=', 'knowledge_area' )
+        ->or_where( 'term_taxonomy', '=', 'branch' )
         ->add_fields( array(
             Field::make( 'image', 'tax_thumbnail', __('Thumbnail') ),
         ) );
+
+    Container::make('term_meta', __('Knowledge conditional'))
+        ->where( 'term_taxonomy', '=', 'branch' )
+        ->add_fields(array(
+            Field::make('textarea', 'knowledge_section_desc', __('Knowledge section description')),
+            Field::make('multiselect', 'knowledge_conditional', __('Knowledge list'))
+                ->add_options('get_knowledge')
+        ));
 }
