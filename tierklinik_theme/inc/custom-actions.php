@@ -128,6 +128,37 @@ class CustomActions
             'rewrite'             => true,
             'query_var'           => true,
         ] );
+
+        register_post_type( 'vocabulary', [
+            'label'  => null,
+            'labels' => [
+                'name'               => __('Vocabulary'),
+                'singular_name'      => __('Vocabulary'),
+                'add_new'            => __('Add a new Vocabulary'),
+                'add_new_item'       => __('Add a new Vocabulary'),
+                'edit_item'          => __('Edit Vocabulary'),
+                'new_item'           => __('New Vocabulary'),
+                'view_item'          => __('View Vocabulary'),
+                'search_items'       => __('Search'),
+                'not_found'          => __('Not found'),
+                'not_found_in_trash' => __('Not found in the Vocabulary'),
+                'parent_item_colon'  => '',
+                'menu_name'          => __('Vocabulary'),
+            ],
+            'description'         => '',
+            'public'              => true,
+            'show_in_menu'        => null,
+            'show_in_rest'        => null,
+            'rest_base'           => null,
+            'menu_position'       => null,
+            'menu_icon'           => null,
+            'hierarchical'        => false,
+            'supports'            => [ 'title', 'editor', ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+            'taxonomies'          => [],
+            'has_archive'         => false,
+            'rewrite'             => true,
+            'query_var'           => true,
+        ] );
     }
 
     function news_posts_query($limit=-1,$orderby='date', $order='DESC'){

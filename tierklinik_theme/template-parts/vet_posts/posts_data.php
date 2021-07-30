@@ -68,7 +68,7 @@ class Veterinarians
                 ),
                 'thumbnail' => array(
                     'alt' => get_post_meta($attachment->ID, '_wp_attachment_image_alt', true),
-                    'src' => get_the_post_thumbnail_url($post->ID, 'thumbnail'),
+                    'src' => get_the_post_thumbnail_url($post->ID, 'medium'),
                 )
             );
         }
