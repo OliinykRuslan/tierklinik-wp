@@ -6,7 +6,7 @@ $logo_id  = get_term_meta($tax_terms->term_id, '_tax_page_logo', true);
 $logo_src = wp_get_attachment_image_url($logo_id);
 $logo_alt = get_post_meta($logo_id, '_wp_attachment_image_alt', true);
 $f_banner_id  = get_term_meta($tax_terms->term_id, '_tax_first_banner', true);
-$f_banner_src = wp_get_attachment_image_url($f_banner_id);
+$f_banner_src = wp_get_attachment_image_url($f_banner_id, 'full');
 $f_banner_alt = get_post_meta($f_banner_id, '_wp_attachment_image_alt', true);
 $services     = carbon_get_term_meta($tax_terms->term_id, 'services_list');
 $services_title = carbon_get_term_meta($tax_terms->term_id, 'tax_service_title');
@@ -65,7 +65,7 @@ if(!empty($f_banner_id)):
         <picture>
             <img src="<?= $f_banner_src?>" alt="<?= $f_banner_alt?>">
         </picture>
-    </section>
+</section>
     <?php
 endif;
 ?>
@@ -100,7 +100,7 @@ if(!empty($b_banner_id)):
         <picture>
             <img src="<?= $b_banner_src?>" alt="<?= $b_banner_alt?>">
         </picture>
-    </section>
+</section>
 <?php
 endif;
 ?>
