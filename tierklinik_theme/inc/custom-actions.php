@@ -3,9 +3,13 @@
 class CustomActions
 {
     function __construct(){
-        add_action( 'init', array($this, 'register_post_types') );
-        add_action( 'init', array($this, 'create_taxonomy') );
-        add_filter('news_posts_query', array($this, 'news_posts_query'));
+        add_action( 'init'                          , array($this, 'register_post_types') );
+        add_action( 'init'                          , array($this, 'create_taxonomy') );
+        add_filter('get_fist_letter'                , array($this, 'get_fist_letter'));
+        add_filter('news_posts_query'               , array($this, 'news_posts_query'));
+        add_filter('vocabulary_posts_query'         , array($this, 'vocabulary_posts_query'));
+        add_filter('alphabet_HTML_generation'       , array($this, 'alphabet_HTML_generation'));
+        add_filter('vocabulary_list_HTML_generate'  , array($this, 'vocabulary_list_HTML_generate'));
     }
 
     function create_taxonomy(){
@@ -161,6 +165,12 @@ class CustomActions
         ] );
     }
 
+    /**
+     * @param int $limit
+     * @param string $orderby
+     * @param string $order
+     * @return WP_Query
+     */
     function news_posts_query($limit=-1,$orderby='date', $order='DESC'){
         $args = array(
             'post_type' => 'news',
@@ -172,6 +182,91 @@ class CustomActions
 
         $posts = new WP_Query($args);
         return $posts;
+    }
+
+    /**
+     * @param $str
+     * @return string
+     */
+    function get_fist_letter($str){
+        return strtolower(substr($str, 0, 1));
+    }
+
+    /**
+     * @return int[]|WP_Post[]
+     */
+    function vocabulary_posts_query(){
+        $query = new WP_Query;
+
+        $q_args = array(
+            'post_per_page' => -1,
+            'post_type' => 'vocabulary',
+            'orderby'   => 'name',
+            'order'     => 'ASC'
+        );
+        wp_reset_postdata();
+        return $query->query($q_args);
+    }
+
+    /**
+     * @return string
+     */
+    function alphabet_HTML_generation(){
+        $letters_arr = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
+        $list_items = '<ul class="alphabet">';
+        $container_wrap_end     = '</ul>';
+
+        foreach($letters_arr as $item){
+            $href = 'let_'.apply_filters('get_fist_letter', $item);
+            $list_items .= sprintf('<li><a href="#%s">%s</a></li>', $href, $item);
+        }
+
+        $list_items .= $container_wrap_end;
+
+        return $list_items;
+    }
+
+    /**
+     * @param $vocabulary_q
+     * @return string
+     */
+    function vocabulary_list_HTML_generate($vocabulary_q){
+        $html = '';
+        $container_id = null;
+        $before = '</div>';
+        $next_post = false;
+        $prev_post = false;
+        $previous_letter = null;
+        $cont = count($vocabulary_q);
+        foreach($vocabulary_q as $key => $item){
+            $current_title = $item->post_title;
+            $first_letter = substr($current_title, 0, 1);
+            $container_id = 'let_'.apply_filters('get_fist_letter', $current_title);
+            $after = sprintf('<div class="vocabulary_single_group" id="%s">', $container_id);
+            $letter_container = sprintf('<div class="letter_container">%s</div>', $first_letter);
+            $cont = '<div class="vocabulary_item"><h3 class="vocabulary_item_title">'.$current_title.'</h3>'.$item->post_content.'</div>';
+            if (is_null($previous_letter)) {
+                $previous_letter = apply_filters('get_fist_letter',$current_title);
+                $html = $after;
+                $html .= $letter_container;
+                $html .= '<div class="voc_items">';
+                $html .= $cont;
+            }elseif($previous_letter !== apply_filters('get_fist_letter',$current_title)){
+                $previous_letter = apply_filters('get_fist_letter',$current_title);
+                $html .= $before;
+                $html .= $before;
+                $html .= $after;
+                $html .= $letter_container;
+                $html .= '<div class="voc_items">';
+                $html .= $cont;
+            }elseif($previous_letter == apply_filters('get_fist_letter',$current_title)){
+                $html .= $cont;
+            }
+            if($cont == $key+1){
+                $html .= $before;
+            }
+        }
+        return $html;
     }
 }
 new CustomActions();
