@@ -16,10 +16,11 @@ class Vacancies
             'limit'     => $limit
         ] );
 
+        $res = array();
         foreach ($terms as $term){
             $count = $term->count;
             $max_personal = +(carbon_get_term_meta($term->term_id, 'max_personal_num'));
-            $percent = (100%$max_personal)*$count;
+            $percent = (100/$max_personal)*$count;
             if($max_personal-$count > 0){
                 $res[] = array(
                     'id'                                => $term->term_id,

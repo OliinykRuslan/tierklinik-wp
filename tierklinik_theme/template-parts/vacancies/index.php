@@ -1,12 +1,4 @@
 <?php
-include_once(__DIR__ . '/v-query.php');
-$limit = $vacancy_q_limit ?? null;
-$vacancies = new Vacancies($limit);
-
-if (empty($vacancies)) {
-    exit();
-}
-
 
 foreach ($vacancies->terms as $vacancy) {
     $single_item_permalink = $vacancy['url'];

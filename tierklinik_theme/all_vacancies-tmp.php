@@ -4,6 +4,8 @@
  */
 
 $post_id = get_the_ID();
+include_once('template-parts/vacancies/v-query.php');
+$vacancies = new Vacancies;
 get_header();
 
 include_once('template-parts/app_banner/index.php');

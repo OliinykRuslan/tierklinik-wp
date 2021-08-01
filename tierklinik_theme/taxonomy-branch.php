@@ -22,8 +22,9 @@ $vets_term = [
     'slug' => $tax_terms->taxonomy,
     'id' => $tax_terms->term_id
 ];
-
-$vacancy_q_limit = 3;
+include_once('template-parts/vacancies/v-query.php');
+$limit = $vacancy_q_limit ?? 3;
+$vacancies = new Vacancies($limit);
 
 get_header(); ?>
 
@@ -150,11 +151,14 @@ if (!empty($b_banner_id)):
         </picture>
     </section>
 <?php
-endif; ?>
+endif;
+
+if (!empty($vacancies->terms)):
+?>
 
     <section class="news-section">
         <div class="container mx-auto">
-            <div class="news-wrap expertise">
+            <div class="news-wrap">
                 <div class="item-wrap">
                     <?php
                     include('template-parts/vacancies/index.php'); ?>
@@ -170,5 +174,6 @@ endif; ?>
         <?= __('Alle Fachgebiete') ?>
     </a>
 <?php
+endif;
 
 get_footer();
