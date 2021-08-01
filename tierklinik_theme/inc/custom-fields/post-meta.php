@@ -413,12 +413,6 @@ function crb_register_custom_fields(){
         ->add_fields(array(
             Field::make('text', 'max_personal_num', __('Maximum number of employees'))
                 ->set_attribute( 'pattern', '[0-9]+' )
-                ->help_text('*Only numbers value')
-                ->set_width(70),
-            Field::make('text', 'current_personal_num', __('Number currently'))
-                ->set_attribute( 'readOnly', true)
-                ->set_width(30)
-                ->set_default_value(get_number_currently())
-                ->help_text('*Read Only')
+                ->help_text('*Only numbers value.'.'<br>'.'<span style="color: green; font-size: large">Number currently value '.get_number_currently(). '</span>')
         ));
 }
