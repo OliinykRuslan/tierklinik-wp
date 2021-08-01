@@ -23,11 +23,20 @@ if(!empty($vacancies->terms)):
 </section>
 <?php
 else: ?>
-    <section>
-        <div class="container mx-auto">
-            <h2><?= __('Momentan ist unser Team komplett')?></h2>
-        </div>
+    <section class="not-found-section">
+            <h2 class="section-title"><?= __('Momentan ist unser Team komplett')?></h2>
+
+        <a href="/" class="btn shadow-lg mx-auto">
+            <?= __('Zurück zur Startseite') ?>
+        </a>
     </section>
+
+    <picture>
+        <!--            <source srcset="dist/assets/images/webp/Fotobanner_Desktop.webp" type="image/webp">-->
+        <img src=<?= get_template_directory_uri() . "/dist/assets/images/Fotobanner_Desktop.jpg"?> alt="">
+    </picture>
 <?php
+
+    include_once('template-parts/go_home_btn/index.php');
 endif;
 get_footer();

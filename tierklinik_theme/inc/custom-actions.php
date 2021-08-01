@@ -13,7 +13,7 @@ class CustomActions
     }
 
     function create_taxonomy(){
-        register_taxonomy( 'branch', [ 'veterinarians', 'vacancies' ], [
+        register_taxonomy( 'branch', [ 'veterinarians' ], [
             'label'                 => __('Branch'),
             'labels'                => [
                 'name'              => __('Branch'),

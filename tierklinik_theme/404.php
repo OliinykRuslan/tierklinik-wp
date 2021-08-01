@@ -24,8 +24,8 @@ get_header();
     </section>
 
     <picture>
-        <source srcset="dist/assets/images/webp/Fotobanner_Desktop.webp" type="image/webp">
-        <img src="dist/assets/images/Fotobanner_Desktop.png" alt="">
+<!--        <source srcset="dist/assets/images/webp/Fotobanner_Desktop.webp" type="image/webp">-->
+        <img src=<?= get_template_directory_uri() . "/dist/assets/images/Fotobanner_Desktop.jpg"?> alt="">
     </picture>
 <?php
 include_once('template-parts/go_home_btn/index.php');
