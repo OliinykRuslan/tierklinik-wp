@@ -12,7 +12,7 @@ include_once('template-parts/app_banner/index.php');
 
 if(!empty($vacancies->terms)):
 ?>
-<section class="news-section">
+<section class="news-section vacancy">
     <div class="container mx-auto">
         <div class="news-wrap">
             <div class="item-wrap">
