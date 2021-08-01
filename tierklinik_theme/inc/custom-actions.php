@@ -192,36 +192,36 @@ class CustomActions
             'query_var'           => true,
         ] );
 
-        register_post_type( 'vacancies', [
-            'label'  => null,
-            'labels' => [
-                'name'               => __('Vacancies'),
-                'singular_name'      => __('Vacancies'),
-                'add_new'            => __('Add a new Vacancy'),
-                'add_new_item'       => __('Add a new Vacancy'),
-                'edit_item'          => __('Edit Vacancy'),
-                'new_item'           => __('New Vacancy'),
-                'view_item'          => __('View Vacancy'),
-                'search_items'       => __('Search'),
-                'not_found'          => __('Not found'),
-                'not_found_in_trash' => __('Not found in the Vacancy'),
-                'parent_item_colon'  => '',
-                'menu_name'          => __('Vacancy'),
-            ],
-            'description'         => '',
-            'public'              => true,
-            'show_in_menu'        => null,
-            'show_in_rest'        => null,
-            'rest_base'           => null,
-            'menu_position'       => null,
-            'menu_icon'           => null,
-            'hierarchical'        => false,
-            'supports'            => [ 'title', 'editor', ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-            'taxonomies'          => [],
-            'has_archive'         => false,
-            'rewrite'             => true,
-            'query_var'           => true,
-        ] );
+//        register_post_type( 'vacancies', [
+//            'label'  => null,
+//            'labels' => [
+//                'name'               => __('Vacancies'),
+//                'singular_name'      => __('Vacancies'),
+//                'add_new'            => __('Add a new Vacancy'),
+//                'add_new_item'       => __('Add a new Vacancy'),
+//                'edit_item'          => __('Edit Vacancy'),
+//                'new_item'           => __('New Vacancy'),
+//                'view_item'          => __('View Vacancy'),
+//                'search_items'       => __('Search'),
+//                'not_found'          => __('Not found'),
+//                'not_found_in_trash' => __('Not found in the Vacancy'),
+//                'parent_item_colon'  => '',
+//                'menu_name'          => __('Vacancy'),
+//            ],
+//            'description'         => '',
+//            'public'              => true,
+//            'show_in_menu'        => null,
+//            'show_in_rest'        => null,
+//            'rest_base'           => null,
+//            'menu_position'       => null,
+//            'menu_icon'           => null,
+//            'hierarchical'        => false,
+//            'supports'            => [ 'title', 'editor', ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+//            'taxonomies'          => [],
+//            'has_archive'         => false,
+//            'rewrite'             => true,
+//            'query_var'           => true,
+//        ] );
     }
 
     /**

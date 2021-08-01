@@ -9,6 +9,8 @@ $vacancies = new Vacancies;
 get_header();
 
 include_once('template-parts/app_banner/index.php');
+
+if(!empty($vacancies->terms)):
 ?>
 <section class="news-section">
     <div class="container mx-auto">
@@ -20,4 +22,12 @@ include_once('template-parts/app_banner/index.php');
     </div>
 </section>
 <?php
+else: ?>
+    <section>
+        <div class="container mx-auto">
+            <h2><?= __('Momentan ist unser Team komplett')?></h2>
+        </div>
+    </section>
+<?php
+endif;
 get_footer();

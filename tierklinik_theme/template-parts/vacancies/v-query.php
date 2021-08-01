@@ -29,7 +29,7 @@ class Vacancies
                     'max_personal'                      => $max_personal,
                     'count'                             => $count,
                     'free_places_num'                   => $max_personal-$count,
-                    'percentage_of_occupied_places'     => $percent
+                    'percentage_of_occupied_places'     => number_format($percent, 0)
                 );
             }
         }
