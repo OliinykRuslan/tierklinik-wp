@@ -14,7 +14,7 @@ include_once('template-parts/app_banner/index.php');
 ?>
 <section class="news-section">
     <div class="container mx-auto">
-        <div class="news-wrap expertise">
+        <div class="news-wrap">
             <div class="item-wrap">
         <?php
         if(!empty($list)):
