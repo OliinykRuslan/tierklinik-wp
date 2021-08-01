@@ -1,12 +1,11 @@
 <?php
 /**
- * Template name: Knowledge Area
+ * Template name: Branches
  */
 
-include_once('template-parts/knowledge/knowledge_query.php');
-$knowledge_list = new Knowledge;
-
 $post_id = get_the_ID();
+include_once('template-parts/branches/branches_q.php');
+$list = new Branches;
 $add_sections = carbon_get_post_meta($post_id, 'additional_sections');
 
 get_header();
@@ -18,15 +17,15 @@ include_once('template-parts/app_banner/index.php');
         <div class="news-wrap expertise">
             <div class="item-wrap">
         <?php
-        if(!empty($knowledge_list)):
+        if(!empty($list)):
 
-            foreach($knowledge_list->query_knowledge as $key => $item):
+            foreach($list->branches_q as $key => $item):
 
                 $single_item_permalink      = $item['url'];
-                $single_item_thumbnail_src  = $item["thumb_src"];
-                $single_item_thumbnail_alt  = $item["thumb_alt"]?? null;
+                $single_item_thumbnail_src  = $item["thumbnail"]['src']?? null;
+                $single_item_thumbnail_alt  = $item["thumbnail"]['alt']?? null;
                 $single_item_title          = $item["name"];
-                $single_item_arrow          = false;
+                $single_item_arrow          = true;
                 include('template-parts/news/single_item.php');
 
             endforeach;

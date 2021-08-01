@@ -19,6 +19,26 @@ function get_knowledge(){
     return $res;
 };
 
+
+function get_number_currently(){
+    $id = $_REQUEST['tag_ID']?? null;
+    if($id){
+        global $wpdb;
+        $table = $wpdb->prefix . 'term_taxonomy';
+
+        $query = $wpdb->get_results("SELECT count
+                                           FROM $table 
+                                           where term_id = '" . $id . "'");
+
+        if($query){
+            return $query[0]->count;
+        }else {
+            return false;
+        }
+    }
+}
+
+
 add_action( 'carbon_fields_register_fields', 'crb_register_custom_fields' );
 function crb_register_custom_fields(){
     Container::make('post_meta', __('Main banner'))
@@ -150,6 +170,7 @@ function crb_register_custom_fields(){
         ));
 
     Container::make('post_meta', 'page_gallery', __('Page gallery'))
+        ->where( 'post_type', '=', 'page' )
         ->add_fields(array(
             Field::make('checkbox', 'show_gallery', __('Show gallery? Yes/No')),
             Field::make('text', 'gallery_subtitle', __('Subtitle'))
@@ -286,6 +307,7 @@ function crb_register_custom_fields(){
                 ))
                 ->set_width(50)
         ));
+
     Container::make( 'term_meta', __('Page content'))
         ->where( 'term_taxonomy', '=', 'branch')
         ->add_fields(array(
@@ -384,5 +406,19 @@ function crb_register_custom_fields(){
             Field::make('textarea', 'knowledge_section_desc', __('Knowledge section description')),
             Field::make('multiselect', 'knowledge_conditional', __('Knowledge list'))
                 ->add_options('get_knowledge')
+        ));
+
+    Container::make('term_meta', __('Personal'))
+        ->where('term_taxonomy', '=', 'speciality')
+        ->add_fields(array(
+            Field::make('text', 'max_personal_num', __('Maximum number of employees'))
+                ->set_attribute( 'pattern', '[0-9]+' )
+                ->help_text('*Only numbers value')
+                ->set_width(70),
+            Field::make('text', 'current_personal_num', __('Number currently'))
+                ->set_attribute( 'readOnly', true)
+                ->set_width(30)
+                ->set_default_value(get_number_currently())
+                ->help_text('*Read Only')
         ));
 }

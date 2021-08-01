@@ -16,7 +16,7 @@ if(array_search('recruiting', $add_sections) !== false)
 if($news_posts->have_posts()):?>
     <section class="newsblog-section">
         <div class="container mx-auto">
-            <h2 class="section-title">Newsblog</h2>
+            <h2 class="section-title"><?= __('Newsblog')?></h2>
     <?php
     while ($news_posts->have_posts()):
         $news_posts->the_post();?>
