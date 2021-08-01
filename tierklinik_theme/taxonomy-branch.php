@@ -156,8 +156,11 @@ endif;
 if (!empty($vacancies->terms)):
 ?>
 
-    <section class="news-section">
+    <section class="news-section vacancy">
         <div class="container mx-auto">
+
+            <h2 class="section-title">Offene Stellen Innere Medizin</h2>
+
             <div class="news-wrap">
                 <div class="item-wrap">
                     <?php
