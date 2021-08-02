@@ -10,6 +10,7 @@ class CustomActions
         add_filter('vocabulary_posts_query'         , array($this, 'vocabulary_posts_query'));
         add_filter('alphabet_HTML_generation'       , array($this, 'alphabet_HTML_generation'));
         add_filter('vocabulary_list_HTML_generate'  , array($this, 'vocabulary_list_HTML_generate'));
+        add_filter('insert_content'                 , array($this, 'insert_content'),10,3);
     }
 
     function create_taxonomy(){
@@ -300,5 +301,22 @@ class CustomActions
         return $html;
     }
 
+    /**
+     * @param $content
+     * @param $insert
+     * @param $selector
+     * @return string
+     */
+    function insert_content( $content, $insert, $selector ) {
+        $paragraphs = explode($selector,$content);
+        $new_content = '';
+        foreach ($paragraphs as $index => $paragraph) {
+            $new_content .= $paragraph;
+            if( round( count($paragraphs) / 2 )  == $index ) {
+                $new_content .= $insert;
+            }
+        }
+        return $new_content;
+    }
 }
 new CustomActions();
