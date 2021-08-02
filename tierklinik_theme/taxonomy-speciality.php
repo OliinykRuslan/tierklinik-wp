@@ -67,3 +67,23 @@ endif;?>
     </a>
 <?php
 get_footer();
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        let vacancyName = '<?= $tax_terms->name . " ID:" . $post_id?>';
+        let vacancyNameInput = jQuery('input[name="vacansy-name"]');
+        let fileInput = jQuery('input[type=file]');
+
+        fileInput.on('change', function (e){
+            let label = jQuery(this).closest('.form-group').find('label');
+            let txt = jQuery(this).closest('.form-group').find('.txt');
+            let fileName = e.target.files[0].name;
+            label.text(fileName);
+            txt.remove();
+        })
+
+        if(vacancyNameInput.length){
+            vacancyNameInput.val(vacancyName);
+        }
+    });
+</script>
