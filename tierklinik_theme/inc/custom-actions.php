@@ -13,7 +13,7 @@ class CustomActions
     }
 
     function create_taxonomy(){
-        register_taxonomy( 'branch', [ 'veterinarians' ], [
+        register_taxonomy( 'branch', [ 'veterinarians', 'vacancies' ], [
             'label'                 => __('Branch'),
             'labels'                => [
                 'name'              => __('Branch'),
@@ -56,34 +56,6 @@ class CustomActions
                 'add_new_item'      => __('Add New Knowledge'),
                 'new_item_name'     => __('New Knowledge Name'),
                 'menu_name'         => __('Knowledge'),
-            ],
-            'description'           => '',
-            'public'                => true,
-            'hierarchical'          => true,
-            'show_ui'               => true,
-            'rewrite'               => true,
-            'capabilities'          => array(),
-            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
-            'show_admin_column'     => true,
-            'show_in_rest'          => null,
-            'rest_base'             => null,
-        ] );
-
-        register_taxonomy( 'speciality', [ 'veterinarians' ], [
-            'label'                 => __('Speciality'),
-            'labels'                => [
-                'name'              => __('Speciality'),
-                'singular_name'     => __('Speciality'),
-                'search_items'      => __('Search Speciality'),
-                'all_items'         => __('All Speciality'),
-                'view_item '        => __('View Speciality'),
-                'parent_item'       => __('Parent Speciality'),
-                'parent_item_colon' => __('Parent Speciality:'),
-                'edit_item'         => __('Edit Speciality'),
-                'update_item'       => __('Update Speciality'),
-                'add_new_item'      => __('Add New Speciality'),
-                'new_item_name'     => __('New Speciality Name'),
-                'menu_name'         => __('Speciality'),
             ],
             'description'           => '',
             'public'                => true,
@@ -192,7 +164,36 @@ class CustomActions
             'query_var'           => true,
         ] );
 
-
+        register_post_type( 'vacancies', [
+            'label'  => null,
+            'labels' => [
+                'name'               => __('Vacancies'),
+                'singular_name'      => __('Vacancy'),
+                'add_new'            => __('Add a new Vacancy'),
+                'add_new_item'       => __('Add a new Vacancy'),
+                'edit_item'          => __('Edit Vacancy'),
+                'new_item'           => __('New Vacancy'),
+                'view_item'          => __('View Vacancy'),
+                'search_items'       => __('Search'),
+                'not_found'          => __('Not found'),
+                'not_found_in_trash' => __('Not found in the Vacancy'),
+                'parent_item_colon'  => '',
+                'menu_name'          => __('Vacancies'),
+            ],
+            'description'         => '',
+            'public'              => true,
+            'show_in_menu'        => null,
+            'show_in_rest'        => null,
+            'rest_base'           => null,
+            'menu_position'       => null,
+            'menu_icon'           => null,
+            'hierarchical'        => false,
+            'supports'            => [ 'title', 'editor', ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+            'taxonomies'          => [],
+            'has_archive'         => false,
+            'rewrite'             => true,
+            'query_var'           => true,
+        ] );
     }
 
     /**

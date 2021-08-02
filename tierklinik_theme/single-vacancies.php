@@ -1,17 +1,16 @@
 <?php
 
-$tax_terms = get_queried_object();
-$post_id = $tax_terms->term_id;
-$banner_url = carbon_get_term_meta($post_id, 'banner_background_img');
-$banner_background = sprintf("style='background: no-repeat center url(%s); background-size: cover;'", $banner_url);
-$banner_title = carbon_get_term_meta($post_id, 'banner_title');
-$banner_subtitle = carbon_get_term_meta($post_id, 'banner_page_subtitle');
-$content = carbon_get_term_meta($post_id, 'term_cont');
+$post_id            = get_the_ID();
+$banner_url         = carbon_get_post_meta($post_id, 'banner_background_img');
+$banner_background  = sprintf("style='background: no-repeat center url(%s); background-size: cover;'", $banner_url);
+$banner_title       = carbon_get_post_meta($post_id, 'banner_title');
+$banner_subtitle    = carbon_get_post_meta($post_id, 'banner_page_subtitle');
+$content            = get_the_content();
 
-$title = __('Stellenausschreibung');
-$subtitle = __('Offene Stellen');
+$title      = __('Stellenausschreibung');
+$subtitle   = __('Offene Stellen');
 if(!empty($banner_title)){
-    $title = $tax_terms->name;
+    $title = get_the_title();
 }
 
 if(!empty($banner_subtitle)){
@@ -69,3 +68,23 @@ endif;?>
     </a>
 <?php
 get_footer();
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        let vacancyName = '<?= $tax_terms->name . " ID:" . $post_id?>';
+        let vacancyNameInput = jQuery('input[name="vacansy-name"]');
+        let fileInput = jQuery('input[type=file]');
+
+        fileInput.on('change', function (e){
+            let label = jQuery(this).closest('.form-group').find('label');
+            let txt = jQuery(this).closest('.form-group').find('.txt');
+            let fileName = e.target.files[0].name;
+            label.text(fileName);
+            txt.remove();
+        })
+
+        if(vacancyNameInput.length){
+            vacancyNameInput.val(vacancyName);
+        }
+    });
+</script>
