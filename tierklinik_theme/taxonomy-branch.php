@@ -23,10 +23,11 @@ $vets_term = [
     'id' => $tax_terms->term_id
 ];
 include_once('template-parts/vacancies/v-query.php');
-$limit = $vacancy_q_limit ?? 3;
-$vacancies = new Vacancies($limit);
+$vacancies = new Vacancies($tax_terms);
 
-get_header(); ?>
+get_header();
+?>
+
 
     <section class="section-hero">
         <div class="hero-wrap"
@@ -153,13 +154,15 @@ if (!empty($b_banner_id)):
 <?php
 endif;
 
-if (!empty($vacancies->terms)):
+var_dump($vacancies->vacancies_data->have_posts());
+
+if ($vacancies->vacancies_data->have_posts()):
 ?>
 
     <section class="news-section vacancy">
         <div class="container mx-auto">
 
-            <h2 class="section-title">Offene Stellen Innere Medizin</h2>
+            <h2 class="section-title"><?= __('Offene Stellen Innere Medizin')?></h2>
 
             <div class="news-wrap">
                 <div class="item-wrap">

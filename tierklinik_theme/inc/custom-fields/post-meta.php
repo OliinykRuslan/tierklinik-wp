@@ -308,12 +308,65 @@ function crb_register_custom_fields(){
                 ->set_width(50)
         ));
 
-    Container::make('term_meta', __('Content'))
+    Container::make('term_meta', __('Main banner'))
         ->add_fields(array(
-            Field::make('rich_text', 'term_cont', __('Any content'))
+            Field::make('radio', 'banner_background_type', __('Background type'))
+                ->set_width(50)
+                ->help_text(__('You can choose the option of the banner background you need from the list.'))
+                ->set_options(array(
+                    'gradient'  => __('Gradient'),
+                    'image'     => __('Image')
+                ))
+                ->set_default_value('image'),
+            Field::make('color', 'banner_gradient_start')
+                ->set_default_value('#3fc7b1')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'banner_background_type',
+                        'value' => 'gradient',
+                        'compare' => '=',
+                    )
+                ))
+                ->help_text(__('Installed by default "#3fc7b1".'))
+                ->set_width(50),
+            Field::make('color', 'banner_gradient_end')
+                ->set_default_value('#36637a')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'banner_background_type',
+                        'value' => 'gradient',
+                        'compare' => '=',
+                    )
+                ))
+                ->help_text(__('Installed by default "#36637a".'))
+                ->set_width(50),
+            Field::make('image', 'banner_background_img', __('Background image'))
+                ->set_value_type('url')
+                ->set_conditional_logic(array(
+                    'relation' => 'AND',
+                    array(
+                        'field' => 'banner_background_type',
+                        'value' => 'image',
+                        'compare' => '=',
+                    )
+                ))
+                ->set_width(50),
+            Field::make('text', 'banner_title')
+                ->set_width(50)
+                ->set_attribute( 'placeholder', __('Title') ),
+            Field::make('textarea', 'banner_page_subtitle')
+                ->set_width(50),
         ));
 
-    Container::make('term_meta', __('Main banner'))
+    Container::make('post_meta', __('Employment percentage'))
+        ->where( 'post_type', '=', 'vacancies' )
+        ->add_fields(array(
+            Field::make('text', 'vacancy_employment_percentage', __('Employment'))
+        ));
+    Container::make('post_meta', __('Main banner'))
+        ->where( 'post_type', '=', 'vacancies' )
         ->add_fields(array(
             Field::make('radio', 'banner_background_type', __('Background type'))
                 ->set_width(50)
@@ -463,13 +516,5 @@ function crb_register_custom_fields(){
             Field::make('textarea', 'knowledge_section_desc', __('Knowledge section description')),
             Field::make('multiselect', 'knowledge_conditional', __('Knowledge list'))
                 ->add_options('get_knowledge')
-        ));
-
-    Container::make('term_meta', __('Personal'))
-        ->where('term_taxonomy', '=', 'speciality')
-        ->add_fields(array(
-            Field::make('text', 'max_personal_num', __('Maximum number of employees'))
-                ->set_attribute( 'pattern', '[0-9]+' )
-                ->help_text('*Only numbers value.'.'<br>'.'<span style="color: green; font-size: large">Number currently value '.get_number_currently(). '</span>')
         ));
 }
