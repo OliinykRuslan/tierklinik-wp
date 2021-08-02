@@ -55,7 +55,9 @@ endif;?>
                     <h4 class="section-subtitle"><?= __('Schnupperlehre')?></h4>
 
                     <h4 class="title-form"><?= __('Persönliche Angaben')?></h4>
-                    <?= do_shortcode('[contact-form-7 id="96" title="Application for Jobs"]')?>
+                    <div class="application-form">
+                        <?= do_shortcode('[contact-form-7 id="96" title="Application for Jobs"]')?>
+                    </div>
                 </div>
             </div>
         </div>

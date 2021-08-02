@@ -158,4 +158,13 @@ $(document).ready(function () {
       top = $(id).offset().top;
     $("body,html").animate({ scrollTop: top }, 1500);
   });
+
+  // open form
+  // $(document).on("click", ".open-modal-form", function () {
+  //   $(".section-application").addClass("opened");
+  // });
+
+  $(".open-modal-form").click(function () {
+    $(".section-application").slideDown("slow", function () {});
+  });
 });
