@@ -160,11 +160,8 @@ $(document).ready(function () {
   });
 
   // open form
-  // $(document).on("click", ".open-modal-form", function () {
-  //   $(".section-application").addClass("opened");
-  // });
-
   $(".open-modal-form").click(function () {
     $(".section-application").slideDown("slow", function () {});
+    $(".tax-dynamic-desc").slideUp("slow", function () {});
   });
 });
