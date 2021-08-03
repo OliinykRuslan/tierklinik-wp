@@ -7,6 +7,7 @@ class CustomActions
         add_action( 'init'                          , array($this, 'create_taxonomy') );
         add_filter('get_fist_letter'                , array($this, 'get_fist_letter'));
         add_filter('news_posts_query'               , array($this, 'news_posts_query'));
+        add_filter('wissen_posts_query'               , array($this, 'wissen_posts_query'));
         add_filter('vocabulary_posts_query'         , array($this, 'vocabulary_posts_query'));
         add_filter('alphabet_HTML_generation'       , array($this, 'alphabet_HTML_generation'));
         add_filter('vocabulary_list_HTML_generate'  , array($this, 'vocabulary_list_HTML_generate'));
@@ -57,6 +58,62 @@ class CustomActions
                 'add_new_item'      => __('Add New Knowledge'),
                 'new_item_name'     => __('New Knowledge Name'),
                 'menu_name'         => __('Knowledge'),
+            ],
+            'description'           => '',
+            'public'                => true,
+            'hierarchical'          => true,
+            'show_ui'               => true,
+            'rewrite'               => true,
+            'capabilities'          => array(),
+            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
+            'show_admin_column'     => true,
+            'show_in_rest'          => null,
+            'rest_base'             => null,
+        ] );
+
+        register_taxonomy( 'fachgebiet', [ 'wissen' ], [
+            'label'                 => __('Fachgebiet'),
+            'labels'                => [
+                'name'              => __('Fachgebiet'),
+                'singular_name'     => __('Fachgebiet'),
+                'search_items'      => __('Search Fachgebiet'),
+                'all_items'         => __('All Fachgebiet'),
+                'view_item '        => __('View Fachgebiet'),
+                'parent_item'       => __('Parent Fachgebiet'),
+                'parent_item_colon' => __('Parent Fachgebiet:'),
+                'edit_item'         => __('Edit Fachgebiet'),
+                'update_item'       => __('Update Fachgebiet'),
+                'add_new_item'      => __('Add New Fachgebiet'),
+                'new_item_name'     => __('New Fachgebiet Name'),
+                'menu_name'         => __('Fachgebiet'),
+            ],
+            'description'           => '',
+            'public'                => true,
+            'hierarchical'          => true,
+            'show_ui'               => true,
+            'rewrite'               => true,
+            'capabilities'          => array(),
+            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
+            'show_admin_column'     => true,
+            'show_in_rest'          => null,
+            'rest_base'             => null,
+        ] );
+
+        register_taxonomy( 'animal_species', [ 'wissen' ], [
+            'label'                 => __('Animal Species'),
+            'labels'                => [
+                'name'              => __('Animal Species'),
+                'singular_name'     => __('Animal Species'),
+                'search_items'      => __('Search Animal Species'),
+                'all_items'         => __('All Animal Species'),
+                'view_item '        => __('View Animal Species'),
+                'parent_item'       => __('Parent Animal Species'),
+                'parent_item_colon' => __('Parent Animal Species:'),
+                'edit_item'         => __('Edit Animal Species'),
+                'update_item'       => __('Update Animal Species'),
+                'add_new_item'      => __('Add New Animal Species'),
+                'new_item_name'     => __('New Animal Species Name'),
+                'menu_name'         => __('Animal Species'),
             ],
             'description'           => '',
             'public'                => true,
@@ -195,6 +252,37 @@ class CustomActions
             'rewrite'             => true,
             'query_var'           => true,
         ] );
+
+        register_post_type( 'wissen', [
+            'label'  => null,
+            'labels' => [
+                'name'               => __('Wissen'),
+                'singular_name'      => __('Wissen'),
+                'add_new'            => __('Add a new Wissen'),
+                'add_new_item'       => __('Add a new Wissen'),
+                'edit_item'          => __('Edit Wissen'),
+                'new_item'           => __('New Wissen'),
+                'view_item'          => __('View Wissen'),
+                'search_items'       => __('Search'),
+                'not_found'          => __('Not found'),
+                'not_found_in_trash' => __('Not found in the Wissen'),
+                'parent_item_colon'  => '',
+                'menu_name'          => __('Wissen'),
+            ],
+            'description'         => '',
+            'public'              => true,
+            'show_in_menu'        => null,
+            'show_in_rest'        => null,
+            'rest_base'           => null,
+            'menu_position'       => null,
+            'menu_icon'           => null,
+            'hierarchical'        => false,
+            'supports'            => [ 'title', 'editor', 'thumbnail', 'excerpt' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+            'taxonomies'          => [],
+            'has_archive'         => false,
+            'rewrite'             => true,
+            'query_var'           => true,
+        ] );
     }
 
     /**
@@ -206,6 +294,25 @@ class CustomActions
     function news_posts_query($limit=-1,$orderby='date', $order='DESC'){
         $args = array(
             'post_type' => 'news',
+            'status'    => 'publish',
+            'limit'     =>  $limit,
+            'orderby'   =>  $orderby,
+            'order'     =>  $order,
+        );
+
+        $posts = new WP_Query($args);
+        return $posts;
+    }
+
+    /**
+     * @param int $limit
+     * @param string $orderby
+     * @param string $order
+     * @return WP_Query
+     */
+    function wissen_posts_query($limit=-1,$orderby='date', $order='DESC'){
+        $args = array(
+            'post_type' => 'wissen',
             'status'    => 'publish',
             'limit'     =>  $limit,
             'orderby'   =>  $orderby,
