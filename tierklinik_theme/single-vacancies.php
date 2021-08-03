@@ -71,7 +71,7 @@ get_footer();
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function(){
-        let vacancyName = '<?= $tax_terms->name . " ID:" . $post_id?>';
+        let vacancyName = '<?= get_the_title() . " ID:" . $post_id?>';
         let vacancyNameInput = jQuery('input[name="vacansy-name"]');
         let fileInput = jQuery('input[type=file]');
 

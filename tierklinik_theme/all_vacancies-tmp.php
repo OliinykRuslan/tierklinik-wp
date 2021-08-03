@@ -10,7 +10,7 @@ get_header();
 
 include_once('template-parts/app_banner/index.php');
 
-if(!empty($vacancies->terms)):
+if($vacancies->vacancies_data->have_posts()):
 ?>
 <section class="news-section vacancy">
     <div class="container mx-auto">
