@@ -60,6 +60,7 @@ function crb_register_custom_fields(){
     Container::make('post_meta', __('Main banner'))
         ->where( 'post_type', '=', 'page')
         ->or_where('post_type', '=', 'news')
+        ->or_where('post_type', '=', 'wissen')
         ->or_where('post_type', '=', 'veterinarians')
         ->add_fields(array(
             Field::make('image', 'banner_image', 'Left side image')
