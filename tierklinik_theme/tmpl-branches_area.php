@@ -1,7 +1,7 @@
 <?php
-/**
- * Template name: Branches
- */
+///**
+// * Template name: Branches
+// */
 
 include_once('template-parts/branches/branches_q.php');
 $knowledge_list = new Branches();

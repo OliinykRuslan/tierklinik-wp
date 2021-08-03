@@ -158,11 +158,15 @@ function crb_register_custom_fields(){
                     Field::make('rich_text', 'page_duplex_paragraph_content', __('Paragraph Content') )
                 ))
                 ->add_fields( 'modules', array(
-                    Field::make('multiselect', 'additional_modules', __('Sections list'))
+                    Field::make('select', 'additional_modules', __('Sections list'))
                         ->add_options(get_modules_list())
                 ))
                 ->add_fields('image_banner', array(
                     Field::make('image', 'page_any_img', __('Image'))
+                ))
+                ->add_fields('form', array(
+                    Field::make('checkbox', 'show_button', __('Add button && hide form')),
+                    Field::make('text', 'form_shortcode', __('Shortcode'))
                 ))
 
         ));
