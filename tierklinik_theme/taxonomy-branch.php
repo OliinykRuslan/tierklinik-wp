@@ -154,8 +154,6 @@ if (!empty($b_banner_id)):
 <?php
 endif;
 
-var_dump($vacancies->vacancies_data->have_posts());
-
 if ($vacancies->vacancies_data->have_posts()):
 ?>
 
