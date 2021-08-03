@@ -39,5 +39,7 @@ foreach($def_page_content as $content):
             break;
     }
 endforeach;
-
-echo $html;
+?>
+<div class="container mx-auto">
+<?= $html; ?>
+</div>
