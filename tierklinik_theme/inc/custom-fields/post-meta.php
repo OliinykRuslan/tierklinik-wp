@@ -19,16 +19,23 @@ function get_knowledge(){
     return $res;
 };
 
+function get_post_id(){
+    return $_REQUEST['post']?? null;
+}
+
+function get_term_id(){
+    return $_REQUEST['tag_ID']?? null;
+}
+
 
 function get_number_currently(){
-    $id = $_REQUEST['tag_ID']?? null;
-    if($id){
+    if(get_term_id()){
         global $wpdb;
         $table = $wpdb->prefix . 'term_taxonomy';
 
         $query = $wpdb->get_results("SELECT count
                                            FROM $table 
-                                           where term_id = '" . $id . "'");
+                                           where term_id = '" . get_term_id() . "'");
 
         if($query){
             return $query[0]->count;
@@ -36,6 +43,15 @@ function get_number_currently(){
             return false;
         }
     }
+}
+
+function get_modules_list(){
+    return array(
+        'recruiting' => __('Recruiting'),
+//        'career'     => __('Career'),
+        'about'      => __('About section'),
+        'contacts'   => __('Contacts section')
+    );
 }
 
 
@@ -101,6 +117,53 @@ function crb_register_custom_fields(){
             Field::make('text', 'banner_button_link')
                 ->set_width(50),
             Field::make('checkbox', 'show_emergency_block', 'Show emergency block? Yes/No'),
+        ));
+
+    Container::make('post_meta', __('Referral to the attending physician'))
+//        ->where('post_type', '=', 'page')
+        ->where('post_id', '=', '104')
+        ->add_fields(array(
+            Field::make('text', 'destination_title_section', __('Title section'))
+                ->set_default_value('Überweisung an die Belegärzte'),
+            Field::make('complex', 'list_of_destinations', __('List of destinations'))
+                ->set_collapsed(true)
+                ->add_fields(array(
+                    Field::make('text', 'destination_title', __('Name'))
+                        ->set_width(50),
+                    Field::make('textarea', 'destination_desc', __('Description'))
+                        ->set_width(50)
+                ))
+                ->set_header_template('<% if (destination_title) { %>
+                                            <%- destination_title %>
+                                    <% } %>')
+        ));
+
+    Container::make('post_meta', __('Page main content'))
+        ->where( function( $condition ) {
+            $condition->where( 'post_template', '=', 'default' );
+            $condition->where( 'post_type', '=', 'page' );
+            $condition->where( 'post_id', '!=', get_option( 'page_on_front' ) );
+        } )
+        ->add_fields( array(
+            Field::make( 'complex', 'def_page_content', __('Page content') )
+                ->add_fields( 'title', array(
+                    Field::make( 'text', 'page_any_title', __('Title') ),
+                ))
+                ->add_fields( 'paragraph', array(
+                    Field::make( 'rich_text', 'page_any_text', __('Paragraph') ),
+                ))
+                ->add_fields( 'duplex_paragraph', array(
+                    Field::make( 'text', 'page_any_paragraph_title', __('Paragraph Title') ),
+                    Field::make('rich_text', 'page_duplex_paragraph_content', __('Paragraph Content') )
+                ))
+                ->add_fields( 'modules', array(
+                    Field::make('multiselect', 'additional_modules', __('Sections list'))
+                        ->add_options(get_modules_list())
+                ))
+                ->add_fields('image_banner', array(
+                    Field::make('image', 'page_any_img', __('Image'))
+                ))
+
         ));
 
     Container::make('post_meta', 'vet_list',__('Veterinarians list'))
@@ -225,12 +288,7 @@ function crb_register_custom_fields(){
         ->where( 'post_type', '=', 'page' )
         ->add_fields(array(
             Field::make('multiselect', 'additional_sections', __('Sections list'))
-                ->add_options(array(
-                    'recruiting' => __('Recruiting'),
-                    'career'     => __('Career'),
-                    'about'      => __('About section'),
-                    'contacts'   => __('Contacts section')
-                ))
+                ->add_options(get_modules_list())
         ));
 
 
