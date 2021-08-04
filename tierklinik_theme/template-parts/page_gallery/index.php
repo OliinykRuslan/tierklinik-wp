@@ -15,7 +15,6 @@ $gallery = new Gallery($post_id);
             ?>
             <div class="galerie-img">
                 <picture>
-<!--                    <source srcset="dist/assets/images/webp/_03A4468.webp" type="image/webp">-->
                     <img src="<?= $image['src']?>" alt="<?= $image['alt']?>">
                 </picture>
             </div>
