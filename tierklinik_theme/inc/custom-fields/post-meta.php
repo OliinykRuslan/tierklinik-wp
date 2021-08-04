@@ -59,6 +59,7 @@ add_action( 'carbon_fields_register_fields', 'crb_register_custom_fields' );
 function crb_register_custom_fields(){
     Container::make('post_meta', __('Main banner'))
         ->where( 'post_type', '=', 'page')
+        ->where( 'post_template', '!=', 'notfall-tmpl.php' )
         ->or_where('post_type', '=', 'news')
         ->or_where('post_type', '=', 'wissen')
         ->or_where('post_type', '=', 'veterinarians')
@@ -173,6 +174,7 @@ function crb_register_custom_fields(){
 
     Container::make('post_meta', 'vet_list',__('Veterinarians list'))
         ->where( 'post_type', '=', 'page' )
+        ->where( 'post_template', '!=', 'notfall-tmpl.php' )
         ->add_fields(array(
             Field::make('checkbox', 'show_vet_list', __('Show list? Yes/No'))
                 ->set_width(50),
@@ -239,6 +241,7 @@ function crb_register_custom_fields(){
 
     Container::make('post_meta', 'page_gallery', __('Page gallery'))
         ->where( 'post_type', '=', 'page' )
+        ->where( 'post_template', '!=', 'notfall-tmpl.php' )
         ->add_fields(array(
             Field::make('checkbox', 'show_gallery', __('Show gallery? Yes/No')),
             Field::make('text', 'gallery_subtitle', __('Subtitle'))
@@ -291,6 +294,7 @@ function crb_register_custom_fields(){
 
     Container::make('post_meta', __('Additional sections'))
         ->where( 'post_type', '=', 'page' )
+        ->where( 'post_template', '!=', 'notfall-tmpl.php' )
         ->add_fields(array(
             Field::make('multiselect', 'additional_sections', __('Sections list'))
                 ->add_options(get_modules_list())
@@ -579,5 +583,15 @@ function crb_register_custom_fields(){
             Field::make('textarea', 'knowledge_section_desc', __('Knowledge section description')),
             Field::make('multiselect', 'knowledge_conditional', __('Knowledge list'))
                 ->add_options('get_knowledge')
+        ));
+    Container::make('post_meta', __('Instruction'))
+        ->where( 'post_template', '=', 'notfall-tmpl.php' )
+        ->add_fields(array(
+            Field::make('text', 'emergency_list_title', __('Title')),
+            Field::make('complex', 'emergency_list', __('Instruction Items'))
+                ->set_collapsed( true )
+                ->add_fields(array(
+                    Field::make('rich_text', 'emergency_list_item', __('Item'))
+                ))
         ));
 }

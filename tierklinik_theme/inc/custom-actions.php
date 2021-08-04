@@ -7,11 +7,14 @@ class CustomActions
         add_action( 'init'                          , array($this, 'create_taxonomy') );
         add_filter('get_fist_letter'                , array($this, 'get_fist_letter'));
         add_filter('news_posts_query'               , array($this, 'news_posts_query'));
-        add_filter('wissen_posts_query'               , array($this, 'wissen_posts_query'));
+        add_filter('wissen_posts_query'             , array($this, 'wissen_posts_query'));
+        add_filter('event_posts_query'              , array($this, 'event_posts_query'));
         add_filter('vocabulary_posts_query'         , array($this, 'vocabulary_posts_query'));
         add_filter('alphabet_HTML_generation'       , array($this, 'alphabet_HTML_generation'));
         add_filter('vocabulary_list_HTML_generate'  , array($this, 'vocabulary_list_HTML_generate'));
         add_filter('insert_content'                 , array($this, 'insert_content'),10,3);
+        add_filter( 'body_class'                    , array($this,  'my_class_names' ));
+
     }
 
     function create_taxonomy(){
@@ -324,6 +327,25 @@ class CustomActions
     }
 
     /**
+     * @param int $limit
+     * @param string $orderby
+     * @param string $order
+     * @return WP_Query
+     */
+    function event_posts_query($limit=-1,$orderby='date', $order='DESC'){
+        $args = array(
+            'post_type' => 'event_listing',
+            'status'    => 'publish',
+            'limit'     =>  $limit,
+            'orderby'   =>  $orderby,
+            'order'     =>  $order,
+        );
+
+        $events = new WP_Query($args);
+        return $events;
+    }
+
+    /**
      * @param $str
      * @return string
      */
@@ -424,6 +446,14 @@ class CustomActions
             }
         }
         return $new_content;
+    }
+
+    function my_class_names( $classes ) {
+
+        if( is_page_template('notfall-tmpl.php') )
+            $classes[] = 'emergency-page';
+
+        return $classes;
     }
 }
 new CustomActions();
