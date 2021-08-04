@@ -12,7 +12,7 @@ class Branches
     private function get_branches()
     {
         $terms = get_terms([
-            'taxonomy' => 'branch',
+            'taxonomy' => 'fachgebiet',
             'hide_empty' => false,
             'limit' => -1
         ]);

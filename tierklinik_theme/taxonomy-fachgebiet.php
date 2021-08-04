@@ -122,10 +122,10 @@ endif;
                 <div class="item-wrap">
                     <?php
                     foreach ($knowledge_conditional as $item):
-                        $knowledge = get_term_by('id', $item, 'knowledge_area');
-                        $single_item_title = $knowledge->name;
-                        $single_item_permalink = get_term_link($item);
-                        $thmb_id = get_term_meta($item, '_tax_thumbnail', true);
+                        $knowledge = get_post($item);
+                        $single_item_title = $knowledge->post_title;
+                        $single_item_permalink = get_permalink($item);
+                        $thmb_id = get_post_thumbnail_id($item);
                         $single_item_thumbnail_src = wp_get_attachment_image_url($thmb_id);
                         $single_item_thumbnail_alt = get_post_meta($thmb_id, '_wp_attachment_image_alt', true);
                         $single_item_arrow = true;
@@ -178,8 +178,8 @@ if ($vacancies->vacancies_data->have_posts()):
         <?= __('Alle Fachgebiete') ?>
     </a>
 <?php
-    include_once('template-parts/contacts_section/index.php');
 
 endif;
+include_once('template-parts/contacts_section/index.php');
 
 get_footer();

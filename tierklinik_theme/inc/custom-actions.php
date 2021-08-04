@@ -18,21 +18,21 @@ class CustomActions
     }
 
     function create_taxonomy(){
-        register_taxonomy( 'branch', [ 'veterinarians', 'vacancies' ], [
-            'label'                 => __('Branch'),
+        register_taxonomy( 'fachgebiet', [ 'veterinarians', 'vacancies', 'wissen' ], [
+            'label'                 => __('Fachgebiet'),
             'labels'                => [
-                'name'              => __('Branch'),
-                'singular_name'     => __('Branch'),
-                'search_items'      => __('Search Branches'),
-                'all_items'         => __('All Branches'),
-                'view_item '        => __('View Branch'),
-                'parent_item'       => __('Parent Branch'),
-                'parent_item_colon' => __('Parent Branch:'),
-                'edit_item'         => __('Edit Branch'),
-                'update_item'       => __('Update Branch'),
-                'add_new_item'      => __('Add New Branch'),
-                'new_item_name'     => __('New Branch Name'),
-                'menu_name'         => __('Branch'),
+                'name'              => __('Fachgebiet'),
+                'singular_name'     => __('Fachgebiet'),
+                'search_items'      => __('Search Fachgebiet'),
+                'all_items'         => __('All Fachgebiet'),
+                'view_item '        => __('View Fachgebiet'),
+                'parent_item'       => __('Parent Fachgebiet'),
+                'parent_item_colon' => __('Parent Fachgebiet:'),
+                'edit_item'         => __('Edit Fachgebiet'),
+                'update_item'       => __('Update Fachgebiet'),
+                'add_new_item'      => __('Add New Fachgebiet'),
+                'new_item_name'     => __('New Fachgebiet Name'),
+                'menu_name'         => __('Fachgebiet'),
             ],
             'description'           => '',
             'public'                => true,
@@ -74,33 +74,33 @@ class CustomActions
             'rest_base'             => null,
         ] );
 
-        register_taxonomy( 'fachgebiet', [ 'wissen' ], [
-            'label'                 => __('Fachgebiet'),
-            'labels'                => [
-                'name'              => __('Fachgebiet'),
-                'singular_name'     => __('Fachgebiet'),
-                'search_items'      => __('Search Fachgebiet'),
-                'all_items'         => __('All Fachgebiet'),
-                'view_item '        => __('View Fachgebiet'),
-                'parent_item'       => __('Parent Fachgebiet'),
-                'parent_item_colon' => __('Parent Fachgebiet:'),
-                'edit_item'         => __('Edit Fachgebiet'),
-                'update_item'       => __('Update Fachgebiet'),
-                'add_new_item'      => __('Add New Fachgebiet'),
-                'new_item_name'     => __('New Fachgebiet Name'),
-                'menu_name'         => __('Fachgebiet'),
-            ],
-            'description'           => '',
-            'public'                => true,
-            'hierarchical'          => true,
-            'show_ui'               => true,
-            'rewrite'               => true,
-            'capabilities'          => array(),
-            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
-            'show_admin_column'     => true,
-            'show_in_rest'          => null,
-            'rest_base'             => null,
-        ] );
+//        register_taxonomy( 'fachgebiet', [ 'wissen' ], [
+//            'label'                 => __('Fachgebiet'),
+//            'labels'                => [
+//                'name'              => __('Fachgebiet'),
+//                'singular_name'     => __('Fachgebiet'),
+//                'search_items'      => __('Search Fachgebiet'),
+//                'all_items'         => __('All Fachgebiet'),
+//                'view_item '        => __('View Fachgebiet'),
+//                'parent_item'       => __('Parent Fachgebiet'),
+//                'parent_item_colon' => __('Parent Fachgebiet:'),
+//                'edit_item'         => __('Edit Fachgebiet'),
+//                'update_item'       => __('Update Fachgebiet'),
+//                'add_new_item'      => __('Add New Fachgebiet'),
+//                'new_item_name'     => __('New Fachgebiet Name'),
+//                'menu_name'         => __('Fachgebiet'),
+//            ],
+//            'description'           => '',
+//            'public'                => true,
+//            'hierarchical'          => true,
+//            'show_ui'               => true,
+//            'rewrite'               => true,
+//            'capabilities'          => array(),
+//            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
+//            'show_admin_column'     => true,
+//            'show_in_rest'          => null,
+//            'rest_base'             => null,
+//        ] );
 
         register_taxonomy( 'animal_species', [ 'wissen' ], [
             'label'                 => __('Animal Species'),

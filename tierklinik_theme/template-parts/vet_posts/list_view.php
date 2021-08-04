@@ -5,8 +5,13 @@ $vets = new Veterinarians($post_id, $vet_single, $vets_term);
 
 if($vets->container_settings['show']):
 
-global $post;
-$page_slug = $post->post_name;
+if(is_tax()){
+    $page_slug = get_queried_object()->slug;
+}else{
+    global $post;
+    $page_slug = $post->post_name;
+}
+
 $button_class = '';
 
 $button_url = '/team';
@@ -31,9 +36,14 @@ if($page_slug == 'team'){
         <h2 class="section-title"><?= $vets->container_settings['title']?></h2>
             <?php
         endif;
+
+        $class_block = $vets->container_settings['class'];
+        if(count($vets->query_posts) < 4){
+            $class_block = 'gallery';
+        }
             ?>
 
-        <div class="veterinarians <?= $vets->container_settings['class']?>">
+        <div class="veterinarians <?= $class_block?>">
             <?php
                 foreach($vets->query_posts as $post):
             ?>
