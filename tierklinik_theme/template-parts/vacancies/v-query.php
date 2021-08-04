@@ -24,7 +24,7 @@ class Vacancies
             $args['tax_query'] = array(
                 'relation' => 'AND',
                 array(
-                    'taxonomy' => "branch",
+                    'taxonomy' => "fachgebiet",
                     'field'    => 'id',
                     'terms'    => $term_data->term_id
                 ),

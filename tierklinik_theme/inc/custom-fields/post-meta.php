@@ -5,15 +5,14 @@ use Carbon_Fields\Field;
 /**
  * @return array
  */
-function get_knowledge(){
-    $terms = get_terms([
-        'taxonomy' => 'knowledge_area',
-        'hide_empty' => false,
+function get_wassen(){
+    $terms = get_posts([
+        'post_type' => 'wissen',
     ]);
 
     $res = array();
     foreach($terms as $term){
-        $res[$term->term_id] = $term->name;
+        $res[$term->ID] = $term->post_title;
     }
 
     return $res;
@@ -122,8 +121,7 @@ function crb_register_custom_fields(){
         ));
 
     Container::make('post_meta', __('Referral to the attending physician'))
-//        ->where('post_type', '=', 'page')
-        ->where('post_id', '=', '104')
+        ->where('post_template', '=', 'tmpl_transfer_form.php')
         ->add_fields(array(
             Field::make('text', 'destination_title_section', __('Title section'))
                 ->set_default_value('Überweisung an die Belegärzte'),
@@ -502,7 +500,7 @@ function crb_register_custom_fields(){
         ));
 
     Container::make( 'term_meta', __('Page content'))
-        ->where( 'term_taxonomy', '=', 'branch')
+        ->where( 'term_taxonomy', '=', 'fachgebiet')
         ->add_fields(array(
             Field::make('checkbox', 'show_logo', __('Show logo? Yes/No')),
             Field::make('image', 'tax_page_logo', __('Logo'))
@@ -588,18 +586,19 @@ function crb_register_custom_fields(){
 
     Container::make( 'term_meta', __('Taxonomy Properties') )
         ->where( 'term_taxonomy', '=', 'knowledge_area' )
-        ->or_where( 'term_taxonomy', '=', 'branch' )
+        ->or_where( 'term_taxonomy', '=', 'fachgebiet' )
         ->add_fields( array(
             Field::make( 'image', 'tax_thumbnail', __('Thumbnail') ),
         ) );
 
     Container::make('term_meta', __('Knowledge conditional'))
-        ->where( 'term_taxonomy', '=', 'branch' )
+        ->where( 'term_taxonomy', '=', 'fachgebiet' )
         ->add_fields(array(
             Field::make('textarea', 'knowledge_section_desc', __('Knowledge section description')),
             Field::make('multiselect', 'knowledge_conditional', __('Knowledge list'))
-                ->add_options('get_knowledge')
+                ->add_options('get_wassen')
         ));
+
     Container::make('post_meta', __('Instruction'))
         ->where( 'post_template', '=', 'notfall-tmpl.php' )
         ->add_fields(array(
