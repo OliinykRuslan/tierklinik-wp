@@ -178,6 +178,8 @@ if ($vacancies->vacancies_data->have_posts()):
         <?= __('Alle Fachgebiete') ?>
     </a>
 <?php
+    include_once('template-parts/contacts_section/index.php');
+
 endif;
 
 get_footer();
