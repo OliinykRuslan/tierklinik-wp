@@ -154,7 +154,80 @@ function crb_register_custom_fields(){
                     Field::make( 'rich_text', 'page_any_text', __('Paragraph') ),
                 ))
                 ->add_fields( 'duplex_paragraph', array(
-                    Field::make( 'text', 'page_any_paragraph_title', __('Paragraph Title') ),
+                    Field::make('select', 'left_side_type', __('Content to choose from'))
+                        ->add_options(array(
+                            'title' => __('Title'),
+                            'image' => __('Portfolio image')
+                        )),
+                    Field::make( 'text', 'page_any_paragraph_title', __('Paragraph Title') )
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'title',
+                                'compare' => '=',
+                            )
+                        )),
+                    Field::make( 'image', 'portfolio_img', __('Image') )
+                        ->set_width(50)
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'image',
+                                'compare' => '=',
+                            )
+                        )),
+                    Field::make( 'text', 'main_text_portfolio', __('Title') )
+                        ->set_width(50)
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'image',
+                                'compare' => '=',
+                            )
+                        )),
+                    Field::make( 'complex', 'additional_text_portfolio', __('Additional strings') )
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'image',
+                                'compare' => '=',
+                            )
+                        ))
+                        ->set_max(3)
+                        ->set_collapsed(true)
+                        ->add_fields(array(
+                            Field::make('text', 'single_additional_text_portfolio', __('Single string'))
+                        )),
+                    Field::make( 'checkbox', 'show_upload_button', __('Add button for download file?') )
+                        ->set_width(40)
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'image',
+                                'compare' => '=',
+                            )
+                        )),
+                    Field::make( 'file', 'upload_file', __('File (PDF)') )
+                        ->set_width(60)
+                        ->set_value_type('url')
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'image',
+                                'compare' => '=',
+                            ),
+                            array(
+                                'field' => 'show_upload_button',
+                                'value' => true,
+                                'compare' => '=',
+                            )
+                        )),
                     Field::make('rich_text', 'page_duplex_paragraph_content', __('Paragraph Content') )
                 ))
                 ->add_fields( 'modules', array(

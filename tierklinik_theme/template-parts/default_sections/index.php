@@ -26,8 +26,39 @@ foreach ($def_page_content as $content):
             break;
         case "duplex_paragraph":
             $html .= '<section class="container mx-auto">' .
-                '<div class="single-post-cont flex">' .
-                '<div class="services_title"><h3>' . $content["page_any_paragraph_title"] . '</h3></div>' .
+                '<div class="single-post-cont flex">';
+            $html .= '<div class="services_title">';
+            if ($content['left_side_type'] == 'title'):
+                $html .= '<h3>' . $content["page_any_paragraph_title"] . '</h3>';
+            endif;
+            if ($content['left_side_type'] == 'image'):
+                $th_id = $content['portfolio_img'];
+                $attachment = get_post($th_id);
+                $alt = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
+                $src = $attachment->guid;
+                $html .= '<div class="photo">
+                                    <picture>
+                                        <img src="' . $src . '" alt="' . $alt . '">
+                                    </picture>
+                                </div>';
+                if (!empty($content["main_text_portfolio"])):
+                    $html .= '<div class="description p-5">
+                                        <div class="item-title">' . $content["main_text_portfolio"] . '</div>';
+                    if (!empty($content["additional_text_portfolio"])):
+                        $html .= '<div>';
+                        foreach ($content["additional_text_portfolio"] as $item):
+                            $html .= '<p>' . $item["single_additional_text_portfolio"] . '</p>';
+                        endforeach;
+                        $html .= '</div>';
+                    endif;
+                    $html .= '</div>';
+
+                    if($content["show_upload_button"]):
+                        $html .= '<a href="'.$content["upload_file"].'" download>'.__("Download Pdf").'</a>';
+                        endif;
+                endif;
+            endif;
+            $html .= '</div>' .
                 '<div class="duplex_side_content">' . $content["page_duplex_paragraph_content"] . '</div>' .
                 '</div>' .
                 '</section>';
