@@ -41,7 +41,6 @@ if($page_slug == 'team'){
                 <a href="<?= $post['guid']?>">
                     <div class="slider-photo">
                         <picture>
-                            <!--                    <source srcset="assets/images/webp/stefan.webp" type="image/webp">-->
                             <img src="<?= $post['thumbnail']['src']?>" alt="<?= $post['thumbnail']['alt']?>">
                         </picture>
                     </div>

@@ -148,6 +148,7 @@ function crb_register_custom_fields(){
         } )
         ->add_fields( array(
             Field::make( 'complex', 'def_page_content', __('Page content') )
+                ->set_collapsed( true )
                 ->add_fields( 'title', array(
                     Field::make( 'text', 'page_any_title', __('Title') ),
                 ))
@@ -168,6 +169,21 @@ function crb_register_custom_fields(){
                 ->add_fields('form', array(
                     Field::make('checkbox', 'show_button', __('Add button && hide form')),
                     Field::make('text', 'form_shortcode', __('Shortcode'))
+                ))
+                ->add_fields('veterinarians', array(
+                    Field::make('text', 'vet_cont_subtitle', __('Subtitle')),
+                    Field::make('text', 'vet_cont_title', __('Title')),
+                ))
+                ->add_fields('gallery', array(
+                    Field::make('text', 'cont_gallery_subtitle', __('Subtitle')),
+                    Field::make('text', 'cont_gallery_title', __('Title')),
+                    Field::make('text', 'cont_gallery_btn_link', __('Link for button')),
+                    Field::make('complex', 'cont_gallery_items', __('Images'))
+                        ->set_max(4)
+                        ->set_collapsed( true )
+                        ->add_fields(array(
+                            Field::make('image', 'cont_gallery_img', __('Image'))
+                        ))
                 ))
 
         ));
