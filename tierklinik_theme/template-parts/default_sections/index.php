@@ -17,6 +17,68 @@ $svg_arrow_to_right = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xml
         </svg>';
 
 
+function link_banner_block_double_generate($content=false){
+    $thmb       = carbon_get_theme_option('recruiting_img');
+    $subtitle   = carbon_get_theme_option('recruiting_slogan');
+    $title      = carbon_get_theme_option('recruiting_tile');
+    $btn_txt    = carbon_get_theme_option('recruiting_btn_txt');
+    $btn_link   = $content["double_block_btn_link"]   ?? '#';
+
+    if(!empty($content["double_block_img"])){
+        $attachment = get_post($content["double_block_img"]);
+        $thmb = $attachment->guid;
+    }
+    if(!empty($content["double_block_subtitle"])){
+        $subtitle = $content["double_block_subtitle"];
+    }
+    if(!empty($content["double_block_title"])){
+        $title = $content["double_block_title"];
+    }
+    if(!empty($content["double_block_btn_txt"])){
+        $btn_txt = $content["double_block_btn_txt"];
+    }
+    if(!empty($content["double_block_btn_link"])){
+        $btn_link = $content["double_block_btn_link"];
+    }
+
+    $res = '<section class="competence-section" style="background: ' . carbon_get_theme_option("recruiting_container_bg") . '">
+                <div class="competence-wrap">
+                      <div class="competence-img" style="background-image: url(' . $thmb . ');"></div>
+                      <div class="text-item">
+                          <p class="section-subtitle color-green">' . $subtitle . '</p>
+                          <h2 class="section-title">' . $title . '</h2>
+                          <a href="' . $btn_link . '" class="btn shadow-lg">' . $btn_txt . '</a>
+                      </div>
+                </div>
+            </section>';
+    return $res;
+}
+
+function vacancies_block_generate($content, $arrow){
+    $array = $content["vacancies_list"];
+    $title = $content["vacancies_block_title"];
+
+    $res = '<section class="news-section vacancy" style="background: #fff">
+                <div class="container mx-auto">
+                     <div class="news-wrap">
+                          <div class="title-wrap"><h2>'.wpautop($title).'</h2></div>
+                                <div class="item-wrap">';
+                              foreach($array as $v):
+                              $post = get_post($v);
+                         $res .= '<a href="'.get_post_permalink($v).'" class="news-item">
+                                     <div class="news-description">
+                                          <p class="news-title">'.$post->post_title.'</p>
+                                          </div>
+                                              <div class="arrow">'.$arrow.'</div>
+                                  </a>';
+                           endforeach;
+                $res .= '</div>
+                    </div>
+                </div>
+            </section>';
+            return $res;
+}
+
 $html = '';
 foreach ($def_page_content as $content):
     switch ($content["_type"]) {
@@ -190,23 +252,7 @@ foreach ($def_page_content as $content):
                           </section>';
             }
             if ($content["additional_modules"] == 'recruiting') {
-                $img = $img ?? carbon_get_theme_option('recruiting_img');
-                $subtitle = $st ?? carbon_get_theme_option('recruiting_slogan');
-                $content = $t ?? carbon_get_theme_option('recruiting_tile');
-                $link = $l ?? '#';
-                $button_text = $btn_txt ?? carbon_get_theme_option('recruiting_btn_txt');
-
-                $html .= '<section class="competence-section" style="background: ' . carbon_get_theme_option("recruiting_container_bg") . '">
-                            <div class="competence-wrap">
-                                <div class="competence-img" style="background-image: url(' . $img . ');">
-                                </div>
-                                <div class="text-item">
-                                    <p class="section-subtitle color-green">' . $subtitle . '</p>
-                                    <h2 class="section-title">' . $content . '</h2>
-                                    <a href="' . $link . '" class="btn shadow-lg">' . $button_text . '</a>
-                                </div>
-                            </div>
-                        </section>';
+                $html .= link_banner_block_double_generate();
             }
             break;
         case "veterinarians":
@@ -290,10 +336,10 @@ foreach ($def_page_content as $content):
             break;
         case 'wissen':
             $w_array = $content['wissen_list'];
-            $html .= '<section class="news-section">
+            $html .= '<section class="news-section" style="background: #40ccb519">
                             <div class="container mx-auto">
                                 <div class="news-wrap">
-                                    <div class="title-wrap">'.$content['wissen_block_title'].'</div>';
+                                    <div class="title-wrap"><h2>'.wpautop($content['wissen_block_title']).'</h2></div>';
                                 foreach($w_array as $w):
                                     $post = get_post($w);
                                     $th   = get_post_thumbnail_id($w);
@@ -313,6 +359,13 @@ foreach ($def_page_content as $content):
                 $html .=        '</div>
                             </div>
                       </section>';
+                break;
+        case 'link_banner_block_double':
+            $html .= link_banner_block_double_generate($content);
+            break;
+        case 'vacancies':
+            $html .= vacancies_block_generate($content, $svg_arrow_to_right);
+            break;
     }
 endforeach;
 

@@ -16,7 +16,21 @@ function get_wissen(){
     }
 
     return $res;
-};
+}
+
+function get_vacancies(){
+    $terms = get_posts([
+        'post_type' => 'vacancies',
+        'limit'     => -1
+    ]);
+
+    $res = array();
+    foreach($terms as $term){
+        $res[$term->ID] = $term->post_title;
+    }
+
+    return $res;
+}
 
 function get_post_id(){
     return $_REQUEST['post']?? null;
@@ -266,6 +280,24 @@ function crb_register_custom_fields(){
                     Field::make('textarea', 'wissen_block_title', __("Title")),
                     Field::make('multiselect', 'wissen_list', __('Wissen list'))
                         ->add_options('get_wissen')
+                ))
+                ->add_fields('vacancies', array(
+                    Field::make('text', 'vacancies_block_title', __("Title")),
+                    Field::make('multiselect', 'vacancies_list', __('Vacancies list'))
+                        ->add_options('get_vacancies')
+                ))
+                ->add_fields('link_banner_block_double', array(
+                    Field::make('image', 'double_block_img', __('Image'))
+                        ->set_width(33),
+                    Field::make('text', 'double_block_subtitle', __('Subtitle'))
+                        ->set_width(33),
+                    Field::make('textarea', 'double_block_title', __('Title'))
+                        ->set_width(33),
+                    Field::make('text', 'double_block_btn_txt', __('Button text'))
+                        ->set_default_value('Mehr erfahren')
+                        ->set_width(50),
+                    Field::make('text', 'double_block_btn_link', __('Button link'))
+                        ->set_width(50)
                 ))
         ));
 
