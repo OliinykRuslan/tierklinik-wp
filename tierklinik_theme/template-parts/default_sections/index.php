@@ -65,11 +65,15 @@ function vacancies_block_generate($content, $arrow){
                                 <div class="item-wrap">';
                               foreach($array as $v):
                               $post = get_post($v);
+                              $persent = carbon_get_post_meta($v, 'vacancy_employment_percentage');
                          $res .= '<a href="'.get_post_permalink($v).'" class="news-item">
                                      <div class="news-description">
-                                          <p class="news-title">'.$post->post_title.'</p>
-                                          </div>
-                                              <div class="arrow">'.$arrow.'</div>
+                                          <p class="news-title">'.
+                                            $post->post_title.
+                                            '<span class="percent">'.$persent.'</span>
+                                          </p>
+                                     </div>
+                                     <div class="arrow">'.$arrow.'</div>
                                   </a>';
                            endforeach;
                 $res .= '</div>
@@ -77,6 +81,34 @@ function vacancies_block_generate($content, $arrow){
                 </div>
             </section>';
             return $res;
+}
+
+function facts_section_generate($content){
+    $attachment = get_post($content['facts_section_bg']);
+    $thmb = $attachment->guid;
+    $subtitle = $content['facts_section_subtitle'];
+    $title = $content['facts_section_title'];
+    $facts_list = $content['facts_list'];
+    $btn_txt = $content['facts_section_btn_txt'];
+    $btn_lnk = $content['facts_section_btn_link'];
+
+    $res = '<section class="facts-section" style="background-image: url('.$thmb.') ;">
+    <div class="container mx-auto">
+        <p class="section-subtitle">'.$subtitle.'</p>
+        <h2 class="section-title">'.$title.'</h2>
+        <div class="facts-wrap">';
+            foreach ($facts_list as $fact):
+       $res .= '<div class="txt-item">
+                    <p class="section-subtitle">'.$fact["fact_value"].'</p>
+                    <p class="section-txt">'.$fact["facts_title"].'</p>
+                </div>';
+            endforeach;
+$res .= '</div>
+         <a href="'.$btn_lnk.'" class="btn shadow-lg mx-auto">'.$btn_txt.'</a>
+    </div>
+</section>';
+
+return $res;
 }
 
 $html = '';
@@ -365,6 +397,9 @@ foreach ($def_page_content as $content):
             break;
         case 'vacancies':
             $html .= vacancies_block_generate($content, $svg_arrow_to_right);
+            break;
+        case 'facts_section':
+            $html = facts_section_generate($content);
             break;
     }
 endforeach;
