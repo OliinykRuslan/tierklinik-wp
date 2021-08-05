@@ -16,7 +16,21 @@ function get_wissen(){
     }
 
     return $res;
-};
+}
+
+function get_vacancies(){
+    $terms = get_posts([
+        'post_type' => 'vacancies',
+        'limit'     => -1
+    ]);
+
+    $res = array();
+    foreach($terms as $term){
+        $res[$term->ID] = $term->post_title;
+    }
+
+    return $res;
+}
 
 function get_post_id(){
     return $_REQUEST['post']?? null;
@@ -266,6 +280,51 @@ function crb_register_custom_fields(){
                     Field::make('textarea', 'wissen_block_title', __("Title")),
                     Field::make('multiselect', 'wissen_list', __('Wissen list'))
                         ->add_options('get_wissen')
+                ))
+                ->add_fields('vacancies', array(
+                    Field::make('text', 'vacancies_block_title', __("Title")),
+                    Field::make('multiselect', 'vacancies_list', __('Vacancies list'))
+                        ->add_options('get_vacancies')
+                ))
+                ->add_fields('link_banner_block_double', array(
+                    Field::make('image', 'double_block_img', __('Image'))
+                        ->set_width(33),
+                    Field::make('text', 'double_block_subtitle', __('Subtitle'))
+                        ->set_width(33),
+                    Field::make('textarea', 'double_block_title', __('Title'))
+                        ->set_width(33),
+                    Field::make('text', 'double_block_btn_txt', __('Button text'))
+                        ->set_default_value('Mehr erfahren')
+                        ->set_width(50),
+                    Field::make('text', 'double_block_btn_link', __('Button link'))
+                        ->set_width(50)
+                ))
+                ->add_fields('facts_section', array(
+                    Field::make('image', 'facts_section_bg', __('Background section'))
+                        ->set_width(33),
+                    Field::make('text', 'facts_section_subtitle', __('Subtitle'))
+                        ->set_default_value('Tierklinik Aarau West')
+                        ->set_width(33),
+                    Field::make('text', 'facts_section_title', __('Title'))
+                        ->set_default_value('Fakten über uns')
+                        ->set_width(33),
+                    Field::make('text', 'facts_section_btn_txt', __('Button text'))
+                        ->set_default_value('Mehr erfahren')
+                        ->set_width(50),
+                    Field::make('text', 'facts_section_btn_link', __('Button link'))
+                        ->set_width(50),
+                    Field::make('complex', 'facts_list', __('Facts List'))
+                        ->set_max(4)
+                        ->set_collapsed( true )
+                        ->add_fields(array(
+                            Field::make('text', 'fact_value', __('Fact value'))
+                                ->set_width(50),
+                            Field::make('text', 'facts_title', __('Facts title'))
+                                ->set_width(50)
+                        ))
+                        ->set_header_template('<% if (fact_value && facts_title) { %>
+                                            <%- facts_title %> <%- fact_value %>
+                                    <% } %>')
                 ))
         ));
 
