@@ -5,7 +5,7 @@ use Carbon_Fields\Field;
 /**
  * @return array
  */
-function get_wassen(){
+function get_wissen(){
     $terms = get_posts([
         'post_type' => 'wissen',
     ]);
@@ -256,7 +256,17 @@ function crb_register_custom_fields(){
                             Field::make('image', 'cont_gallery_img', __('Image'))
                         ))
                 ))
-
+                ->add_fields('quote', array(
+                    Field::make('textarea', 'slogan_content', __('Content'))
+                        ->set_width(50),
+                    Field::make('text', 'slogan_author', __('Author'))
+                        ->set_width(50)
+                ))
+                ->add_fields('wissen', array(
+                    Field::make('textarea', 'wissen_block_title', __("Title")),
+                    Field::make('multiselect', 'wissen_list', __('Wissen list'))
+                        ->add_options('get_wissen')
+                ))
         ));
 
     Container::make('post_meta', 'vet_list',__('Veterinarians list'))
@@ -669,7 +679,7 @@ function crb_register_custom_fields(){
         ->add_fields(array(
             Field::make('textarea', 'knowledge_section_desc', __('Knowledge section description')),
             Field::make('multiselect', 'knowledge_conditional', __('Knowledge list'))
-                ->add_options('get_wassen')
+                ->add_options('get_wissen')
         ));
 
     Container::make('post_meta', __('Instruction'))

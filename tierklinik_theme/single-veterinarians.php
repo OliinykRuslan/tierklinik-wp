@@ -4,7 +4,7 @@ $post_id = get_the_ID();
 
 include_once ('template-parts/vet_posts/posts_data.php');
 $vets = new Veterinarians($post_id, true);
-$tax = get_the_terms($post_id, 'branch');
+$tax = get_the_terms($post_id, 'fachgebiet');
 $news_posts = apply_filters('news_posts_query', 3);
 $st = $tax[0]->name?? null;
 $t = '';

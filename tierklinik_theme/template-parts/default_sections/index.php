@@ -10,6 +10,12 @@ $svg = '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:
                 l85.333,85.333c6.657,6.673,17.463,6.687,24.136,0.031c0.01-0.01,0.02-0.02,0.031-0.031l85.333-85.333
                 C342.915,312.486,342.727,301.682,335.947,295.134z"/>
         </svg>';
+$svg_arrow_to_right = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 476.213 476.213">
+            <polygon points="345.606,107.5 324.394,128.713 418.787,223.107 0,223.107 0,253.107 418.787,253.107 324.394,347.5
+								345.606,368.713 476.213,238.106 "/>
+        </svg>';
+
 
 $html = '';
 foreach ($def_page_content as $content):
@@ -272,6 +278,41 @@ foreach ($def_page_content as $content):
                         </section>';
 
             break;
+        case 'quote':
+            $html .= '<section class="aarau-west-section text-center">
+                            <div class="container mx-auto">
+                                <h3 class="section-title">«'.$content["slogan_content"].'»</h3>';
+                                if(!empty($content["slogan_content"])):
+                  $html .=    '<p class="section-subtitle">'.$content["slogan_author"].'</p>';
+                                endif;
+            $html .=       '</div>
+                        </section>';
+            break;
+        case 'wissen':
+            $w_array = $content['wissen_list'];
+            $html .= '<section class="news-section">
+                            <div class="container mx-auto">
+                                <div class="news-wrap">
+                                    <div class="title-wrap">'.$content['wissen_block_title'].'</div>';
+                                foreach($w_array as $w):
+                                    $post = get_post($w);
+                                    $th   = get_post_thumbnail_id($w);
+                                    $attachment = get_post($th);
+                                    $th_src = $attachment->guid;
+                                    $alt    = get_post_meta($th, '_wp_attachment_image_alt', true);
+                                    $html .= '<a href="'.get_post_permalink($w).'" class="news-item">
+                                                    <picture>
+                                                        <img src="'.$th_src.'" class="news-img" alt="'.$alt.'">
+                                                    </picture>
+                                                    <div class="news-description">
+                                                        <p class="news-title">'.$post->post_title.'</p>
+                                                    </div>
+                                                    <div class="arrow">'.$svg_arrow_to_right.'</div>
+                                                </a>';
+                                endforeach;
+                $html .=        '</div>
+                            </div>
+                      </section>';
     }
 endforeach;
 
