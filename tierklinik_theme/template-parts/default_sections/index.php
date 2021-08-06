@@ -121,7 +121,7 @@ foreach ($def_page_content as $content):
             break;
         case "paragraph":
             $html .= '<div class="container mx-auto">' .
-                '<section class="paragraph_content">' . $content["page_any_text"] . '</section>' .
+                '<section class="paragraph_content">' . wpautop($content["page_any_text"]) . '</section>' .
                 '</div>';
             break;
         case "image_banner":
@@ -177,7 +177,7 @@ foreach ($def_page_content as $content):
                 '</section>';
             break;
         case "form":
-            $html .= '<section class="form-wrap">';
+            $html .= '<section class="form-wrap" style="background-color: rgba(64,204,181,.1);">';
             if ($content["show_button"] !== false) {
                 $class = 'application-form';
                 $html .= '<p><a class="btn shadow-lg mx-auto more open-modal-form">' . __("Jetzt Bewerben") . '</a></p>';
