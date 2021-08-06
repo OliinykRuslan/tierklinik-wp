@@ -751,4 +751,11 @@ function crb_register_custom_fields(){
                     Field::make('rich_text', 'emergency_list_item', __('Item'))
                 ))
         ));
+
+    Container::make('post_meta', __('Post content'))
+        ->where('post_type', '=', 'kundenmagazin')
+        ->add_fields(array(
+            Field::make('file', 'pdf_file', __('File (PDF)'))
+                ->set_value_type('url'),
+        ));
 }
