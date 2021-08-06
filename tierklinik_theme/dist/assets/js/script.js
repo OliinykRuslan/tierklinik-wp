@@ -160,8 +160,30 @@ $(document).ready(function () {
   });
 
   // open form
-  $(".open-modal-form").click(function () {
+  $(".open-modal-form").on("click", function () {
     $(".section-application").slideDown("slow", function () {});
     $(".tax-dynamic-desc").slideUp("slow", function () {});
+
+    $(".page-template-default .form-wrap").slideDown("slow", function () {});
+    $(".paragraph_content").slideUp("slow", function () {});
+
+    $(".btn.full-btn.bg-green").addClass("prev-btn");
+    $(".btn.full-btn.bg-green").html(
+      '<span class="arrow arrow-left mr-2"></span>Zurück'
+    );
+  });
+
+  $(document).on("click", ".prev-btn", function (e) {
+    e.preventDefault();
+
+    $(".page-template-default .form-wrap").slideUp("slow", function () {});
+    $(".paragraph_content").slideDown("slow", function () {});
+
+    $(".btn.full-btn.bg-green").removeClass("prev-btn");
+    $(".btn.full-btn.bg-green").html(
+      '<span class="arrow arrow-left mr-2"></span>Home'
+    );
+
+    $(this).removeClass(".prev-btn");
   });
 });
