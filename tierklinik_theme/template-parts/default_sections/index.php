@@ -121,7 +121,7 @@ foreach ($def_page_content as $content):
             break;
         case "paragraph":
             $html .= '<div class="container mx-auto">' .
-                '<section class="paragraph_content">' . $content["page_any_text"] . '</section>' .
+                '<section class="paragraph_content">' . wpautop($content["page_any_text"]) . '</section>' .
                 '</div>';
             break;
         case "image_banner":

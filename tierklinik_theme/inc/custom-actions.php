@@ -8,13 +8,14 @@ class CustomActions
         add_filter('get_fist_letter'                , array($this, 'get_fist_letter'));
         add_filter('news_posts_query'               , array($this, 'news_posts_query'));
         add_filter('wissen_posts_query'             , array($this, 'wissen_posts_query'));
-        add_filter('kundenmagazin_posts_query'      , array($this, 'kundenmagazin_posts_query'));
         add_filter('event_posts_query'              , array($this, 'event_posts_query'));
         add_filter('vocabulary_posts_query'         , array($this, 'vocabulary_posts_query'));
         add_filter('alphabet_HTML_generation'       , array($this, 'alphabet_HTML_generation'));
         add_filter('vocabulary_list_HTML_generate'  , array($this, 'vocabulary_list_HTML_generate'));
         add_filter('insert_content'                 , array($this, 'insert_content'),10,3);
         add_filter( 'body_class'                    , array($this,  'my_class_names' ));
+        add_filter('get_q_posts'                    , array($this, 'get_q_posts'));
+
 
     }
 
@@ -318,6 +319,54 @@ class CustomActions
             'rewrite'             => true,
             'query_var'           => true,
         ] );
+
+        register_post_type( 'alltag', [
+            'label'  => null,
+            'labels' => [
+                'name'               => __('Alltag'),
+                'singular_name'      => __('Alltag'),
+                'add_new'            => __('Add a new Alltag'),
+                'add_new_item'       => __('Add a new Alltag'),
+                'edit_item'          => __('Edit Alltag'),
+                'new_item'           => __('New Alltag'),
+                'view_item'          => __('View Alltag'),
+                'search_items'       => __('Search'),
+                'not_found'          => __('Not found'),
+                'not_found_in_trash' => __('Not found in the news'),
+                'parent_item_colon'  => '',
+                'menu_name'          => __('Alltag'),
+            ],
+            'description'         => '',
+            'public'              => true,
+            'show_in_menu'        => null,
+            'show_in_rest'        => null,
+            'rest_base'           => null,
+            'menu_position'       => null,
+            'menu_icon'           => null,
+            'hierarchical'        => false,
+            'supports'            => [ 'title', 'editor', 'thumbnail','excerpt' ], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+            'taxonomies'          => [],
+            'has_archive'         => false,
+            'rewrite'             => true,
+            'query_var'           => true,
+        ] );
+
+    }
+
+    function get_q_posts($post_type_name, $limit=-1, $offset=null, $orderby='date', $order='DESC'){
+        $args = array(
+            'post_type' => $post_type_name,
+            'status'    => 'publish',
+            'limit'     =>  $limit,
+            'orderby'   =>  $orderby,
+            'order'     =>  $order,
+        );
+        if($offset){
+            $args['offset'] = $post_type_name;
+        }
+
+        $posts = new WP_Query($args);
+        return $posts;
     }
 
     /**
@@ -358,24 +407,6 @@ class CustomActions
         return $posts;
     }
 
-    /**
-     * @param int $limit
-     * @param string $orderby
-     * @param string $order
-     * @return WP_Query
-     */
-    function kundenmagazin_posts_query($limit=-1,$orderby='date', $order='DESC'){
-        $args = array(
-            'post_type' => 'kundenmagazin',
-            'status'    => 'publish',
-            'limit'     =>  $limit,
-            'orderby'   =>  $orderby,
-            'order'     =>  $order,
-        );
-
-        $posts = new WP_Query($args);
-        return $posts;
-    }
 
     /**
      * @param int $limit
