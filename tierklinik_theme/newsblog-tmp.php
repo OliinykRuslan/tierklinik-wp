@@ -4,12 +4,12 @@
  */
 $post_id = get_the_ID();
 $page_slug = get_post_field( 'post_name' );
-$posts = apply_filters('news_posts_query', -1);
+$posts = apply_filters('get_q_posts', 'news', -1);
 get_header();
 if($page_slug == 'wissen'){
-    $posts = apply_filters('wissen_posts_query', -1);
+    $posts = apply_filters('get_q_posts', 'wissen', -1);
 }elseif($page_slug == 'kundenmagazin'){
-    $posts = apply_filters('kundenmagazin_posts_query', -1);
+    $posts = apply_filters('get_q_posts', 'kundenmagazin', -1);
 }
 
 include_once('template-parts/app_banner/index.php');

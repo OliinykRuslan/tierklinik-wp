@@ -6,9 +6,7 @@ use Carbon_Fields\Field;
  * @return array
  */
 function get_wissen(){
-    $terms = get_posts([
-        'post_type' => 'wissen',
-    ]);
+    $terms = apply_filters('get_q_posts', 'wissen', -1);
 
     $res = array();
     foreach($terms as $term){
@@ -19,10 +17,7 @@ function get_wissen(){
 }
 
 function get_vacancies(){
-    $terms = get_posts([
-        'post_type' => 'vacancies',
-        'limit'     => -1
-    ]);
+    $terms = apply_filters('get_q_posts', 'vacancies', -1);
 
     $res = array();
     foreach($terms as $term){
@@ -75,6 +70,7 @@ function crb_register_custom_fields(){
         ->where( 'post_template', '!=', 'notfall-tmpl.php' )
         ->or_where('post_type', '=', 'news')
         ->or_where('post_type', '=', 'wissen')
+        ->or_where('post_type', '=', 'alltag')
         ->or_where('post_type', '=', 'veterinarians')
         ->add_fields(array(
             Field::make('image', 'banner_image', 'Left side image')
@@ -331,6 +327,7 @@ function crb_register_custom_fields(){
     Container::make('post_meta', 'vet_list',__('Veterinarians list'))
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '!=', 'notfall-tmpl.php' )
+        ->where( 'post_template', '!=', 'gallery-tmpl.php' )
         ->add_fields(array(
             Field::make('checkbox', 'show_vet_list', __('Show list? Yes/No'))
                 ->set_width(50),
@@ -398,6 +395,7 @@ function crb_register_custom_fields(){
     Container::make('post_meta', 'page_gallery', __('Page gallery'))
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '!=', 'notfall-tmpl.php' )
+        ->where( 'post_template', '!=', 'gallery-tmpl.php' )
         ->add_fields(array(
             Field::make('checkbox', 'show_gallery', __('Show gallery? Yes/No')),
             Field::make('text', 'gallery_subtitle', __('Subtitle'))
@@ -448,9 +446,29 @@ function crb_register_custom_fields(){
                 ))
         ));
 
+    Container::make('post_meta', 'page_gallery', __('Page gallery content'))
+        ->where( 'post_type', '=', 'page' )
+        ->where( 'post_template', '=', 'gallery-tmpl.php' )
+        ->add_fields(array(
+            Field::make('text', 'gallery_title', __('Title')),
+            Field::make('text', 'lnk_btn', __('Link button'))
+                ->set_width(50),
+            Field::make('text', 'gallery_btn_txt', __('Button text'))
+                ->set_width(50)
+                ->set_default_value('Mehr laden'),
+            Field::make('complex', 'gallery_images', __('Images'))
+                ->set_collapsed(true)
+                ->add_fields(array(
+                    Field::make('image', 'gallery_img', __('Gallery image'))
+                )),
+            Field::make('image', 'banner_gallery_page', __('Banner'))
+                ->set_value_type('url')
+        ));
+
     Container::make('post_meta', __('Additional sections'))
         ->where( 'post_type', '=', 'page' )
         ->where( 'post_template', '!=', 'notfall-tmpl.php' )
+        ->where( 'post_template', '!=', 'gallery-tmpl.php' )
         ->add_fields(array(
             Field::make('multiselect', 'additional_sections', __('Sections list'))
                 ->add_options(get_modules_list())
