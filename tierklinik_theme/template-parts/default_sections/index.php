@@ -370,8 +370,11 @@ foreach ($def_page_content as $content):
             $w_array = $content['wissen_list'];
             $html .= '<section class="news-section" style="background: #40ccb519">
                             <div class="container mx-auto">
-                                <div class="news-wrap">
-                                    <div class="title-wrap"><h2>'.wpautop($content['wissen_block_title']).'</h2></div>';
+                                <div class="_news-wrap">
+                                    <div class="title-wrap">
+                                    <span class="title-section">wissen</span>
+                                    <h2 style="text-align: center;">'.$content['wissen_block_title'].'</h2>
+                                    </div>';
                                 foreach($w_array as $w):
                                     $post = get_post($w);
                                     $th   = get_post_thumbnail_id($w);

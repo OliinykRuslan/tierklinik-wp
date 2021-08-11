@@ -2,15 +2,22 @@
 
 include_once __DIR__ . '/main_banner.php';
 $banner = new MainBanner($post_id);
+
+$container_class = "flex";
+$title_line_style = null;
+if(empty($banner->right_side_img)){
+    $container_class = '';
+    $title_line_style = "style='max-width: 100%;'";
+}
 ?>
 
 <section class="section-hero">
     <div class="hero-wrap" <?= $banner->background?>>
         <div class="container mx-auto">
             <div class="pb-14">
-                <div class="flex">
+                <div class="<?= $container_class?>">
                     <div class="hero-content">
-                        <h1 class="title-page"><?= $banner->title?></h1>
+                        <h1 class="title-page" <?= $title_line_style?>><?= $banner->title?></h1>
                         <?php
                         if(!empty($banner->subtitle)):
                         ?>
@@ -33,7 +40,6 @@ $banner = new MainBanner($post_id);
                             endif;
                             ?>
                             <picture>
-                                <!-- <source srcset="--><?//= get_template_directory_uri() . '/dist/assets/images/webp/herz.webp'?><!--" type="image/webp">-->
                                 <img src="<?= $banner->right_side_img['src'] ?>" alt="<?= $banner->right_side_img['alt'] ?>">
                             </picture>
                         </div>

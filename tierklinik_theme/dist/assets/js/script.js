@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  let eventBanner = $('.wpem-event-single-image-wrapper'),
+      eventTitle = $('.event-title')
   //mobile menu
   $(document).on("click", ".showMenu", function () {
     $(this).toggleClass("opened");
@@ -186,4 +188,5 @@ $(document).ready(function () {
 
     $(this).removeClass(".prev-btn");
   });
+
 });

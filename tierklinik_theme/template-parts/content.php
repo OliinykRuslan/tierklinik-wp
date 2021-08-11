@@ -10,7 +10,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php tierklinik_theme_post_thumbnail(); ?>
+<!--	--><?php //tierklinik_theme_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
