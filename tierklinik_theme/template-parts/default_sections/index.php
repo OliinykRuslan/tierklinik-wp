@@ -60,8 +60,8 @@ function vacancies_block_generate($content, $arrow){
 
     $res = '<section class="news-section vacancy" style="background: #fff">
                 <div class="container mx-auto">
-                     <div class="news-wrap">
-                          <div class="title-wrap"><h2>'.wpautop($title).'</h2></div>
+                     <div class="_news-wrap">
+                          <div class="title-wrap" style="margin: 0 auto"><h2>'.wpautop($title).'</h2></div>
                                 <div class="item-wrap">';
                               foreach($array as $v):
                               $post = get_post($v);
