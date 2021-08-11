@@ -29,4 +29,17 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_footer();
+get_footer(); ?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function(){
+        let eventBanner = $('.wpem-event-single-image-wrapper'),
+            eventTitle = $('.wpem-event-title').find('.wpem-heading-text')
+
+        if(eventTitle.length && eventBanner.length){
+            let titleBanner = "<h1 class='title-page'>"+eventTitle.text()+"</h1>";
+            eventBanner.find(".wpem-event-single-image").prepend(titleBanner);
+            $(".wpem-event-title").remove();
+        }
+    });
+</script>
