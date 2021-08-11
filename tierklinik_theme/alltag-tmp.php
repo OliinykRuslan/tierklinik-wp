@@ -23,8 +23,14 @@ if($alltag->have_posts()):
                     $attachment     = get_post($th);
                     $alt            = get_post_meta($attachment->ID, '_wp_attachment_image_alt', true);
                     $src            = $attachment->guid;
+                    $caption        = wp_get_attachment_caption($th);
                     ?>
-                    <div class="slider-item max-w-xs shadow-lg">
+                    <div 
+                        class="slider-item max-w-xs shadow-lg"
+                        data-fancybox="gallery"
+                        data-src="<?= $src?>"
+                        data-caption="<?= $caption?>"
+                        >
 <!--                        <a href="--><?//= get_permalink()?><!--">-->
                             <div class="slider-photo">
                                 <picture>
