@@ -29,7 +29,7 @@ if($alltag->have_posts()):
                         class="slider-item max-w-xs shadow-lg"
                         data-fancybox="gallery"
                         data-src="<?= $src?>"
-                        data-caption="<h4 class='item-title'>'<?= the_title()?>'</h4><div>'<?php the_excerpt()?>'</div>" 
+                        data-caption="<h4 class='item-title'><?= the_title()?></h4><div><?php the_excerpt()?></div>"
                         >
 <!--                        <a href="--><?//= get_permalink()?><!--">-->
                             <div class="slider-photo">
