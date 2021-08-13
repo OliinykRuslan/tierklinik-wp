@@ -353,6 +353,14 @@ class CustomActions
 
     }
 
+    /**
+     * @param $post_type_name
+     * @param int $limit
+     * @param null $offset
+     * @param string $orderby
+     * @param string $order
+     * @return WP_Query
+     */
     function get_q_posts($post_type_name, $limit=-1, $offset=null, $orderby='date', $order='DESC'){
         $args = array(
             'post_type' => $post_type_name,

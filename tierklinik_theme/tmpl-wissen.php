@@ -3,12 +3,9 @@
  * Template name: Wissen
  */
 
-//include_once('template-parts/knowledge/knowledge_query.php');
-//$knowledge_list = new Knowledge;
-
 $post_id = get_the_ID();
 $add_sections = carbon_get_post_meta($post_id, 'additional_sections');
-$posts = apply_filters('get_q_posts', 'wissen', -1);
+$posts = apply_filters('get_q_posts', 'wissen', -1, null, 'title');
 
 get_header();
 
