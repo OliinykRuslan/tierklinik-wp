@@ -115,8 +115,12 @@ $html = '';
 foreach ($def_page_content as $content):
     switch ($content["_type"]) {
         case "title":
+            $color_style = null;
+            if(!empty($content['title_txt_color'])){
+                $color_style = sprintf('style="color: %s;"', $content['title_txt_color']);
+            }
             $html .= '<div class="container mx-auto">' .
-                '<section class="def-title"><h2>' . $content["page_any_title"] . '</h2></section>' .
+                '<section class="def-title"><h2 '.$color_style.'>' . $content["page_any_title"] . '</h2></section>' .
                 '</div>';
             break;
         case "paragraph":

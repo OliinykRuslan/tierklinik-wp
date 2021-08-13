@@ -158,7 +158,11 @@ function crb_register_custom_fields(){
             Field::make( 'complex', 'def_page_content', __('Page content') )
                 ->set_collapsed( true )
                 ->add_fields( 'title', array(
-                    Field::make( 'text', 'page_any_title', __('Title') ),
+                    Field::make( 'text', 'page_any_title', __('Title') )
+                        ->set_width(75),
+                    Field::make( 'color', 'title_txt_color', __('Text color') )
+                        ->set_default_value('#37617A')
+                        ->set_width(25)
                 ))
                 ->add_fields( 'paragraph', array(
                     Field::make( 'rich_text', 'page_any_text', __('Paragraph') ),
