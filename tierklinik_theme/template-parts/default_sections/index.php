@@ -63,24 +63,24 @@ function vacancies_block_generate($content, $arrow){
                      <div class="_news-wrap">
                           <div class="title-wrap" style="margin: 0 auto"><h2>'.wpautop($title).'</h2></div>
                                 <div class="item-wrap">';
-                              foreach($array as $v):
-                              $post = get_post($v);
-                              $persent = carbon_get_post_meta($v, 'vacancy_employment_percentage');
-                         $res .= '<a href="'.get_post_permalink($v).'" class="news-item">
+    foreach($array as $v):
+        $post = get_post($v);
+        $persent = carbon_get_post_meta($v, 'vacancy_employment_percentage');
+        $res .= '<a href="'.get_post_permalink($v).'" class="news-item">
                                      <div class="news-description">
                                           <p class="news-title">'.
-                                            $post->post_title.
-                                            '<span class="percent">'.$persent.'</span>
+            $post->post_title.
+            '<span class="percent">'.$persent.'</span>
                                           </p>
                                      </div>
                                      <div class="arrow">'.$arrow.'</div>
                                   </a>';
-                           endforeach;
-                $res .= '</div>
+    endforeach;
+    $res .= '</div>
                     </div>
                 </div>
             </section>';
-            return $res;
+    return $res;
 }
 
 function facts_section_generate($content){
@@ -97,26 +97,32 @@ function facts_section_generate($content){
         <p class="section-subtitle">'.$subtitle.'</p>
         <h2 class="section-title">'.$title.'</h2>
         <div class="facts-wrap">';
-            foreach ($facts_list as $fact):
-       $res .= '<div class="txt-item">
+    foreach ($facts_list as $fact):
+        $res .= '<div class="txt-item">
                     <p class="section-subtitle">'.$fact["fact_value"].'</p>
                     <p class="section-txt">'.$fact["facts_title"].'</p>
                 </div>';
-            endforeach;
-$res .= '</div>
+    endforeach;
+    $res .= '</div>
          <a href="'.$btn_lnk.'" class="btn shadow-lg mx-auto">'.$btn_txt.'</a>
     </div>
 </section>';
 
-return $res;
+    return $res;
 }
 
 $html = '';
 foreach ($def_page_content as $content):
     switch ($content["_type"]) {
         case "title":
+            $color_style = null;
+            $style = null;
+            if(!empty($content['title_txt_color']) || !empty($content['additional_style'])){
+                $style = sprintf('style="color: %s;%s"', $content['title_txt_color'],$content['additional_style']);
+            }
+
             $html .= '<div class="container mx-auto">' .
-                '<section class="def-title"><h2>' . $content["page_any_title"] . '</h2></section>' .
+                '<section class="def-title"><h2 '.$style.'>' . $content["page_any_title"] . '</h2></section>' .
                 '</div>';
             break;
         case "paragraph":
@@ -167,8 +173,8 @@ foreach ($def_page_content as $content):
 
                     if($content["show_upload_button"]):
                         $html .= '<a href="'.$content["upload_file"].'" download class="download-btn">'.
-                        $svg. '<span>'.__("Download Pdf").'</span></a>';
-                        endif;
+                            $svg. '<span>'.__("Download Pdf").'</span></a>';
+                    endif;
                 endif;
             endif;
             $html .= '</div>' .
@@ -360,9 +366,9 @@ foreach ($def_page_content as $content):
             $html .= '<section class="aarau-west-section text-center">
                             <div class="container mx-auto">
                                 <h3 class="section-title">«'.$content["slogan_content"].'»</h3>';
-                                if(!empty($content["slogan_content"])):
-                  $html .=    '<p class="section-subtitle">'.$content["slogan_author"].'</p>';
-                                endif;
+            if(!empty($content["slogan_content"])):
+                $html .=    '<p class="section-subtitle">'.$content["slogan_author"].'</p>';
+            endif;
             $html .=       '</div>
                         </section>';
             break;
@@ -375,13 +381,13 @@ foreach ($def_page_content as $content):
                                     <span class="title-section">wissen</span>
                                     <h2 style="text-align: center;">'.$content['wissen_block_title'].'</h2>
                                     </div>';
-                                foreach($w_array as $w):
-                                    $post = get_post($w);
-                                    $th   = get_post_thumbnail_id($w);
-                                    $attachment = get_post($th);
-                                    $th_src = $attachment->guid;
-                                    $alt    = get_post_meta($th, '_wp_attachment_image_alt', true);
-                                    $html .= '<a href="'.get_post_permalink($w).'" class="news-item">
+            foreach($w_array as $w):
+                $post = get_post($w);
+                $th   = get_post_thumbnail_id($w);
+                $attachment = get_post($th);
+                $th_src = $attachment->guid;
+                $alt    = get_post_meta($th, '_wp_attachment_image_alt', true);
+                $html .= '<a href="'.get_post_permalink($w).'" class="news-item">
                                                     <picture>
                                                         <img src="'.$th_src.'" class="news-img" alt="'.$alt.'">
                                                     </picture>
@@ -390,11 +396,11 @@ foreach ($def_page_content as $content):
                                                     </div>
                                                     <div class="arrow">'.$svg_arrow_to_right.'</div>
                                                 </a>';
-                                endforeach;
-                $html .=        '</div>
+            endforeach;
+            $html .=        '</div>
                             </div>
                       </section>';
-                break;
+            break;
         case 'link_banner_block_double':
             $html .= link_banner_block_double_generate($content);
             break;

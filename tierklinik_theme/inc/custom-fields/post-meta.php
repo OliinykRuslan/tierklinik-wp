@@ -153,12 +153,19 @@ function crb_register_custom_fields(){
             $condition->where( 'post_template', '=', 'default' );
             $condition->where( 'post_type', '=', 'page' );
             $condition->where( 'post_id', '!=', get_option( 'page_on_front' ) );
+
+            $condition->or_where( 'post_type', '=', 'wissen' );
         } )
         ->add_fields( array(
             Field::make( 'complex', 'def_page_content', __('Page content') )
                 ->set_collapsed( true )
                 ->add_fields( 'title', array(
                     Field::make( 'text', 'page_any_title', __('Title') ),
+                    Field::make( 'color', 'title_txt_color', __('Text color') )
+                        ->set_default_value('#37617A')
+                        ->set_width(50),
+                    Field::make('text', 'additional_style', __('Add custom style'))
+                        ->set_width(50)
                 ))
                 ->add_fields( 'paragraph', array(
                     Field::make( 'rich_text', 'page_any_text', __('Paragraph') ),
@@ -775,5 +782,11 @@ function crb_register_custom_fields(){
         ->add_fields(array(
             Field::make('file', 'pdf_file', __('File (PDF)'))
                 ->set_value_type('url'),
+        ));
+
+    Container::make('post_meta', __('Post Signature'))
+        ->where('post_type', '=', 'news')
+        ->add_fields(array(
+           Field::make('textarea', 'signature_txt', __('Signature'))
         ));
 }
