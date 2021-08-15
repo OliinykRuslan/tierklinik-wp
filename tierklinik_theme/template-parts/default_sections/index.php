@@ -383,7 +383,7 @@ foreach ($def_page_content as $content):
                                 <div class="_news-wrap '.$layout_class.'">
                                     <div class="title-wrap">
                                     <span class="title-section">wissen</span>
-                                    <h2 style="text-align: center;">'.$content['wissen_block_title'].'</h2>
+                                    <h2 style="text-align: center;">'.wpautop($content['wissen_block_title']).'</h2>
                                     </div>
                                     <div class="items-wrap">';
             foreach($w_array as $w):
