@@ -374,9 +374,13 @@ foreach ($def_page_content as $content):
             break;
         case 'wissen':
             $w_array = $content['wissen_list'];
+            $layout_class = null;
+            if($content['type_layout'] == 'col_layout'){
+                $layout_class = $content['type_layout'];
+            }
             $html .= '<section class="news-section" style="background: #40ccb519">
                             <div class="container mx-auto">
-                                <div class="_news-wrap">
+                                <div class="_news-wrap '.$layout_class.'">
                                     <div class="title-wrap">
                                     <span class="title-section">wissen</span>
                                     <h2 style="text-align: center;">'.$content['wissen_block_title'].'</h2>
