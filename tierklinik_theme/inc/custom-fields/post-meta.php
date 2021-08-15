@@ -9,10 +9,14 @@ function get_wissen(){
     $terms = apply_filters('get_q_posts', 'wissen', -1);
 
     $res = array();
-    foreach($terms as $term){
-        $res[$term->ID] = $term->post_title;
-    }
 
+    if($terms->have_posts()){
+        while($terms->have_posts()){
+            $terms->the_post();
+            $res[get_the_ID()] = get_the_title();
+        }
+        wp_reset_postdata();
+    }
     return $res;
 }
 
@@ -20,10 +24,13 @@ function get_vacancies(){
     $terms = apply_filters('get_q_posts', 'vacancies', -1);
 
     $res = array();
-    foreach($terms as $term){
-        $res[$term->ID] = $term->post_title;
+    if($terms->have_posts()){
+        while($terms->have_posts()){
+            $terms->the_post();
+            $res[get_the_ID()] = get_the_title();
+        }
+        wp_reset_postdata();
     }
-
     return $res;
 }
 
@@ -280,7 +287,14 @@ function crb_register_custom_fields(){
                         ->set_width(50)
                 ))
                 ->add_fields('wissen', array(
-                    Field::make('textarea', 'wissen_block_title', __("Title")),
+                    Field::make('textarea', 'wissen_block_title', __("Title"))
+                        ->set_width(75),
+                    Field::make('radio', 'type_layout', __('Type layout'))
+                        ->set_width(25)
+                        ->add_options( array(
+                            'single' => 'One column',
+                            'col_layout' => 'Two column',
+                        ) ),
                     Field::make('multiselect', 'wissen_list', __('Wissen list'))
                         ->add_options('get_wissen')
                 ))
