@@ -141,7 +141,7 @@ foreach ($def_page_content as $content):
                 '</section>';
             break;
         case "duplex_paragraph":
-            $html .= '<section class="container mx-auto">' .
+            $html .= '<section class="services container mx-auto">' .
                 '<div class="single-post-cont flex">';
             $html .= '<div class="services_title">';
             if ($content['left_side_type'] == 'title'):
@@ -380,7 +380,8 @@ foreach ($def_page_content as $content):
                                     <div class="title-wrap">
                                     <span class="title-section">wissen</span>
                                     <h2 style="text-align: center;">'.$content['wissen_block_title'].'</h2>
-                                    </div>';
+                                    </div>
+                                    <div class="items-wrap">';
             foreach($w_array as $w):
                 $post = get_post($w);
                 $th   = get_post_thumbnail_id($w);
@@ -398,6 +399,7 @@ foreach ($def_page_content as $content):
                                                 </a>';
             endforeach;
             $html .=        '</div>
+                            </div>
                             </div>
                       </section>';
             break;

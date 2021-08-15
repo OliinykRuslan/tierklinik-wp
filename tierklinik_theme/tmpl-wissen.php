@@ -13,6 +13,31 @@ include_once('template-parts/app_banner/index.php');
 ?>
     <section class="news-section">
         <div class="container mx-auto">
+
+            <!-- filter -->
+            <div class="filter-wrap">
+                <select>
+                    <option>Tierart</option>
+                    <option>Der Kater</option>
+                    <option>Hund</option>
+                    <option>Sonstiges</option>
+                </select>
+
+                <select>
+                    <option>Alle Fachgebiete</option>
+                    <option>Alle Fachgebiete</option>
+                    <option>Alle Fachgebiete</option>
+                    <option>Alle Fachgebiete</option>
+                </select>
+
+                <div class="search-wrap">
+                    <!-- <div class="form-group"> -->
+                        <i class="fas fa-search icon-search"></i>
+                        <input type="text" class="search-input" placeholder="Suchbegriff">
+                    <!-- </div> -->
+                </div>
+            </div>
+
            <div class="item-wrap">
                     <?php
                     if($posts->have_posts()):
