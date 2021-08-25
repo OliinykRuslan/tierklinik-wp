@@ -6,6 +6,9 @@
 $post_id = get_the_ID();
 $add_sections = carbon_get_post_meta($post_id, 'additional_sections');
 $posts = apply_filters('get_q_posts', 'wissen', -1, null, 'title');
+$tierarts = apply_filters('get_custom_terms', 'animal_species');
+
+$tierart_options = apply_filters('options_HTML_generate', $tierarts);
 
 get_header();
 
@@ -16,11 +19,9 @@ include_once('template-parts/app_banner/index.php');
 
             <!-- filter -->
             <div class="filter-wrap">
-                <select>
+                <select class="fltr">
                     <option>Tierart</option>
-                    <option>Der Kater</option>
-                    <option>Hund</option>
-                    <option>Sonstiges</option>
+                    <?= $tierart_options ?>
                 </select>
 
                 <select>

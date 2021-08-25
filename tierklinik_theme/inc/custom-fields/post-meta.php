@@ -127,8 +127,9 @@ function crb_register_custom_fields(){
                 ->set_width(50)
                 ->set_default_value(__('Mit Kompetenz und Herz'))
                 ->set_attribute( 'placeholder', __('Title') ),
-            Field::make('textarea', 'banner_page_subtitle')
+            Field::make('text', 'top_subtitle', __('Top subtitle'))
                 ->set_width(50),
+            Field::make('textarea', 'banner_page_subtitle'),
             Field::make('text', 'banner_button_text')
                 ->set_width(50)
                 ->set_default_value(__('Unsere Fachgebiete')),
@@ -192,6 +193,32 @@ function crb_register_custom_fields(){
                                 'compare' => '=',
                             )
                         )),
+                    Field::make( 'color', 'page_any_paragraph_title_color', __('Color Title') )
+                        ->set_width(50)
+                        ->set_default_value('#37617A')
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'title',
+                                'compare' => '=',
+                            )
+                        )),
+                    Field::make( 'radio', 'page_any_paragraph_title_height', __('Title HTML tag') )
+                        ->set_width(50)
+                        ->set_default_value('#37617A')
+                        ->set_conditional_logic(array(
+                            'relation' => 'AND',
+                            array(
+                                'field' => 'left_side_type',
+                                'value' => 'title',
+                                'compare' => '=',
+                            )
+                        ))
+                        ->add_options(array(
+                                '3' => 'H3',
+                                '2' => 'H2'
+                            )),
                     Field::make( 'image', 'portfolio_img', __('Image') )
                         ->set_width(50)
                         ->set_conditional_logic(array(
@@ -271,7 +298,11 @@ function crb_register_custom_fields(){
                 ))
                 ->add_fields('gallery', array(
                     Field::make('text', 'cont_gallery_subtitle', __('Subtitle')),
-                    Field::make('text', 'cont_gallery_title', __('Title')),
+                    Field::make('text', 'cont_gallery_title', __('Title'))
+                        ->set_width(80),
+                    Field::make('color', 'gallery_title_color', __('Title color'))
+                        ->set_default_value('#37617A')
+                        ->set_width('20'),
                     Field::make('text', 'cont_gallery_btn_link', __('Link for button')),
                     Field::make('complex', 'cont_gallery_items', __('Images'))
                         ->set_max(4)

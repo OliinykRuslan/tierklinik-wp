@@ -9,14 +9,15 @@ class CustomActions
         add_filter('news_posts_query'               , array($this, 'news_posts_query'));
         add_filter('wissen_posts_query'             , array($this, 'wissen_posts_query'));
         add_filter('event_posts_query'              , array($this, 'event_posts_query'));
+        add_filter('get_event_for_vets'             , array($this, 'get_event_for_vets'));
         add_filter('vocabulary_posts_query'         , array($this, 'vocabulary_posts_query'));
         add_filter('alphabet_HTML_generation'       , array($this, 'alphabet_HTML_generation'));
         add_filter('vocabulary_list_HTML_generate'  , array($this, 'vocabulary_list_HTML_generate'));
         add_filter('insert_content'                 , array($this, 'insert_content'),10,3);
         add_filter( 'body_class'                    , array($this,  'my_class_names' ));
         add_filter('get_q_posts'                    , array($this, 'get_q_posts'));
-
-
+        add_filter('get_custom_terms'               , array($this, 'get_custom_terms'),10,1);
+        add_filter('options_HTML_generate'          , array($this, 'options_HTML_generate'),10,1);
     }
 
     function create_taxonomy(){
@@ -75,34 +76,6 @@ class CustomActions
             'show_in_rest'          => null,
             'rest_base'             => null,
         ] );
-
-//        register_taxonomy( 'fachgebiet', [ 'wissen' ], [
-//            'label'                 => __('Fachgebiet'),
-//            'labels'                => [
-//                'name'              => __('Fachgebiet'),
-//                'singular_name'     => __('Fachgebiet'),
-//                'search_items'      => __('Search Fachgebiet'),
-//                'all_items'         => __('All Fachgebiet'),
-//                'view_item '        => __('View Fachgebiet'),
-//                'parent_item'       => __('Parent Fachgebiet'),
-//                'parent_item_colon' => __('Parent Fachgebiet:'),
-//                'edit_item'         => __('Edit Fachgebiet'),
-//                'update_item'       => __('Update Fachgebiet'),
-//                'add_new_item'      => __('Add New Fachgebiet'),
-//                'new_item_name'     => __('New Fachgebiet Name'),
-//                'menu_name'         => __('Fachgebiet'),
-//            ],
-//            'description'           => '',
-//            'public'                => true,
-//            'hierarchical'          => true,
-//            'show_ui'               => true,
-//            'rewrite'               => true,
-//            'capabilities'          => array(),
-//            'meta_box_cb'           => 'post_categories_meta_box', // `post_categories_meta_box` или `post_tags_meta_box`. false
-//            'show_admin_column'     => true,
-//            'show_in_rest'          => null,
-//            'rest_base'             => null,
-//        ] );
 
         register_taxonomy( 'animal_species', [ 'wissen' ], [
             'label'                 => __('Animal Species'),
@@ -429,6 +402,35 @@ class CustomActions
             'limit'     =>  $limit,
             'orderby'   =>  $orderby,
             'order'     =>  $order,
+            'tax_query' => [
+                'relation' => 'AND',
+                [
+                    'taxonomy' => 'event_listing_type',
+                    'field'    => 'slug',
+                    'terms'    => array('for-veterinarians'),
+                    'operator' => 'NOT IN',
+                ]
+            ]
+        );
+
+        $events = new WP_Query($args);
+        return $events;
+    }
+
+    function get_event_for_vets($limit=-1,$orderby='date', $order='DESC'){
+        $args = array(
+            'post_type' => 'event_listing',
+            'status'    => 'publish',
+            'limit'     =>  $limit,
+            'orderby'   =>  $orderby,
+            'order'     =>  $order,
+            'tax_query' => [
+                [
+                    'taxonomy' => 'event_listing_type',
+                    'field'    => 'slug',
+                    'terms'    => 'for-veterinarians',
+                ]
+            ]
         );
 
         $events = new WP_Query($args);
@@ -538,12 +540,48 @@ class CustomActions
         return $new_content;
     }
 
+    /**
+     * @param $classes
+     * @return mixed
+     */
     function my_class_names( $classes ) {
 
         if( is_page_template('notfall-tmpl.php') )
             $classes[] = 'emergency-page';
 
         return $classes;
+    }
+
+    /**
+     * @return array
+     */
+    function get_custom_terms ($tax_slug) {
+        $terms = get_terms( [
+            'taxonomy' => $tax_slug,
+            'hide_empty' => false,
+        ] );
+
+        $arr = array();
+        foreach($terms as $term){
+            $arr[] = array(
+                'id' => $term->term_id,
+                'name' => $term->name,
+                'slug' => $term->slug
+            );
+        }
+        return $arr;
+    }
+
+    /**
+     * @param $arr
+     * @return string
+     */
+    function options_HTML_generate($arr){
+        $res = '';
+        foreach($arr as $item){
+            $res .= '<option value="'.$item["slug"].'">'.$item["name"].'</option>';
+        }
+        return $res;
     }
 }
 new CustomActions();

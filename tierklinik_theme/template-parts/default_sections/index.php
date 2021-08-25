@@ -145,7 +145,11 @@ foreach ($def_page_content as $content):
                 '<div class="single-post-cont flex">';
             $html .= '<div class="services_title">';
             if ($content['left_side_type'] == 'title'):
-                $html .= '<h3>' . $content["page_any_paragraph_title"] . '</h3>';
+                $title_tag = 'h3';
+                if(!empty($content['page_any_paragraph_title_height'])){
+                    $title_tag = 'h'.$content['page_any_paragraph_title_height'];
+                }
+                $html .= '<'.$title_tag.' style="color: '.$content["page_any_paragraph_title_color"].'">' . $content["page_any_paragraph_title"] . '</h3>';
             endif;
             if ($content['left_side_type'] == 'image'):
                 $th_id = $content['portfolio_img'];
@@ -340,10 +344,14 @@ foreach ($def_page_content as $content):
         </section>';
             break;
         case 'gallery':
+            $color = null;
+            if(!empty($content['gallery_title_color'])){
+                $color = 'style="color: '.$content['gallery_title_color'].'"';
+            }
             $html .= '<section class="galerie-section">
                         <div class="container mx-auto">
                             <p class="section-subtitle color-green">' . $content["cont_gallery_subtitle"] . '</p>
-                            <h2 class="section-title">' . $content["cont_gallery_title"] . '</h2>
+                            <h2 '.$color.' class="section-title">' . $content["cont_gallery_title"] . '</h2>
                             <div class="galerie-wrap">';
 
             foreach ($content["cont_gallery_items"] as $image):
@@ -414,7 +422,7 @@ foreach ($def_page_content as $content):
             $html .= vacancies_block_generate($content, $svg_arrow_to_right);
             break;
         case 'facts_section':
-            $html = facts_section_generate($content);
+            $html .= facts_section_generate($content);
             break;
     }
 endforeach;

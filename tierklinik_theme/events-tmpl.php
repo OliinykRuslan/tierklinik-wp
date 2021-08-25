@@ -4,11 +4,15 @@
  */
 
 $post_id = get_the_ID();
+$page_slug = get_post_field( 'post_name' );
 $events = apply_filters('event_posts_query', true);
+
+if($page_slug == "weiterbildung"){
+    $events = apply_filters('get_event_for_vets', true);
+}
 
 get_header();
 include_once('template-parts/app_banner/index.php');
-
 if($events->have_posts()):
 ?>
 <section class="events-wrap">
@@ -16,6 +20,10 @@ if($events->have_posts()):
         <?php
         while ($events->have_posts()):
             $events->the_post();
+
+            $post_type = get_post_type(get_the_ID());
+            $taxonomies = get_object_taxonomies($post_type);
+            $taxonomy_names = wp_get_object_terms(get_the_ID(), $taxonomies);
             $event_id = get_the_id();
             $event_href = get_the_permalink();
             $start = get_post_meta($event_id, '_event_start_date', true);

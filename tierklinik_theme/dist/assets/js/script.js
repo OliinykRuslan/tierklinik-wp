@@ -189,4 +189,8 @@ $(document).ready(function () {
     $(this).removeClass(".prev-btn");
   });
 
+  $('.fltr').on('change', function(){
+      console.log($(this).val())
+  })
+
 });
