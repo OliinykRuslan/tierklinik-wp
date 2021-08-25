@@ -24,6 +24,7 @@ class MainBanner
     function __construct($id){
         $this->title                    = $this->get_banner_title($id);
         $this->subtitle                 = $this->get_field_value($id, 'banner_page_subtitle');
+        $this->top_subtitle             = $this->get_field_value($id, 'top_subtitle');
         $this->button                   = $this->get_btn($id);
         $this->right_side_img           = $this->get_attachment($id, 'banner_image');
         $this->is_emergency             = $this->get_field_value($id, 'show_emergency_block');

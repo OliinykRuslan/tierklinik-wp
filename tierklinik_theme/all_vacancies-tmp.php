@@ -12,7 +12,7 @@ include_once('template-parts/app_banner/index.php');
 
 if($vacancies->vacancies_data->have_posts()):
 ?>
-<section class="news-section vacancy">
+<section class="news-section vacancy" style="background: #fff">
     <div class="container mx-auto">
         <div class="news-wrap">
             <div class="item-wrap">
@@ -20,6 +20,9 @@ if($vacancies->vacancies_data->have_posts()):
             </div>
         </div>
     </div>
+    <a href="/" class="btn shadow-lg mx-auto mt-24">
+        <?= __('Alle Stellen anzeigen') ?>
+    </a>
 </section>
 <?php
 else: ?>

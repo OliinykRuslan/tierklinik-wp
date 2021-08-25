@@ -9,6 +9,7 @@ if(empty($banner->right_side_img)){
     $container_class = '';
     $title_line_style = "style='max-width: 100%;'";
 }
+
 ?>
 
 <section class="section-hero">
@@ -17,6 +18,13 @@ if(empty($banner->right_side_img)){
             <div class="pb-14">
                 <div class="<?= $container_class?>">
                     <div class="hero-content">
+                        <?php
+                        if(!empty($banner->top_subtitle)):
+                        ?>
+                        <p class="top-subtitle mb-4"><?= $banner->top_subtitle?></p>
+                        <?php
+                        endif;
+                        ?>
                         <h1 class="title-page" <?= $title_line_style?>><?= $banner->title?></h1>
                         <?php
                         if(!empty($banner->subtitle)):
